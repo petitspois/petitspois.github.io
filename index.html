@@ -176,6 +176,483 @@
           
           
             
+              <a class="post-title-link" href="/2015/09/01/mongoose/" itemprop="url">
+                未命名
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-01T13:41:19+08:00" content="2015-09-01">
+            2015-09-01
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/09/01/mongoose/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/mongoose/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h1 id="Mongoose">Mongoose</h1><h2 id="Mongoose_是什么?">Mongoose 是什么?</h2><p>一般我们不直接用MongoDB的函数来操作MongoDB数据库 Mongose就是一套操作MongoDB数据库的接口.</p>
+<h2 id="Schema">Schema</h2><p>一种以文件形式存储的数据库模型骨架，无法直接通往数据库端，也就是说它不具备对数据库的操作能力.可以说是数据属性模型(传统意义的表结构)，又或着是“集合”的模型骨架</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 定义一个 Schema */</span></span><br><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">"mongoose"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> TestSchema = <span class="keyword">new</span> mongoose.Schema(&#123;</span><br><span class="line">    name : &#123; type:<span class="built_in">String</span> &#125;,<span class="comment">//属性name,类型为String</span></span><br><span class="line">    age  : &#123; type:<span class="built_in">Number</span>, <span class="keyword">default</span>:<span class="number">0</span> &#125;,<span class="comment">//属性age,类型为Number,默认为0</span></span><br><span class="line">    time : &#123; type:<span class="built_in">Date</span>, <span class="keyword">default</span>:<span class="built_in">Date</span>.now &#125;,</span><br><span class="line">    email: &#123; type:<span class="built_in">String</span>,<span class="keyword">default</span>:<span class="string">''</span>&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>上面这个 TestSchema包含4个属性 [name, age, time, email]</p>
+<h2 id="Model">Model</h2><p>由Schema构造生成的模型，除了Schema定义的数据库骨架以外，还具有数据库操作的行为，类似于管理数据库属性、行为的类<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> db = mongoose.connect(<span class="string">"mongodb://127.0.0.1:27017/test"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建Model</span></span><br><span class="line"><span class="keyword">var</span> TestModel = db.model(<span class="string">"test1"</span>, TestSchema);</span><br></pre></td></tr></table></figure></p>
+<p>test1 数据库中的集合名称, 不存在会创建.</p>
+<h2 id="Entity">Entity</h2><p>由Model创建的实体，使用save方法保存数据，Model和Entity都有能影响数据库的操作，但Model比Entity更具操作性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> TestEntity = <span class="keyword">new</span> TestModel(&#123;</span><br><span class="line">       name : <span class="string">"Lenka"</span>,</span><br><span class="line">       age  : <span class="number">36</span>,</span><br><span class="line">       email: <span class="string">"lenka@qq.com"</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(TestEntity.name); <span class="comment">// Lenka</span></span><br><span class="line"><span class="built_in">console</span>.log(TestEntity.age); <span class="comment">// 36</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="游标">游标</h2><p>MongoDB 使用游标返回find的执行结果.客户端对游标的实现通常能够对最终结果进行有效的控制。可以限制结果的数量，略过部分结果，根据任意键按任意顺序的组合对结果进行各种排序，或者是执行其他一些强的操作。</p>
+<h2 id="ObjectId">ObjectId</h2><p>存储在mongodb集合中的每个文档（document）都有一个默认的主键_id，这个主键名称是固定的，它可以是mongodb支持的任何数据类型，默认是ObjectId。</p>
+<p>ObjectId是一个12字节的 BSON 类型字符串。按照字节顺序，依次代表：<br>4字节：UNIX时间戳<br>3字节：表示运行MongoDB的机器<br>2字节：表示生成此_id的进程<br>3字节：由一个随机数开始的计数器生成的值</p>
+<h2 id="Node-js">Node.js</h2><p>package.json 中加入”mongoose”: “*” 字段<br>npm install 安装依赖.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">"mongoose"</span>);</span><br><span class="line"><span class="keyword">var</span> db = mongoose.connect(<span class="string">"mongodb://localhost:27017/test"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>然后引用</p>
+<h2 id="API">API</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">"mongoose"</span>);</span><br><span class="line"><span class="keyword">var</span> db = mongoose.connect(<span class="string">"mongodb://localhost:27017/test"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="db_-_数据库操作">db - 数据库操作</h2><p>1.挂接数据库连接事件,参数1: 也可以是error.</p>
+<blockquote>
+<p>db.connection.on(‘open’, callback);</p>
+</blockquote>
+<h2 id="Schema_-_表结构">Schema - 表结构</h2><p>1.构造函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> mongoose.Schema( &#123; name:&#123;type:<span class="built_in">String</span>&#125;, age:&#123;type:<span class="built_in">Number</span>, <span class="keyword">default</span>:<span class="number">10</span>&#125;  &#125; )</span><br></pre></td></tr></table></figure></p>
+<p>2.添加属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Schema.add( &#123; name: <span class="string">'String’, email: '</span><span class="built_in">String</span>’, age: ‘<span class="built_in">Number</span>’ &#125; )</span><br></pre></td></tr></table></figure></p>
+<p>3.有时候Schema不仅要为后面的Model和Entity提供公共的属性，还要提供公共的方法<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> Schema.method( 'say’, function()&#123;console.log(‘hello’);&#125; )</span><br><span class="line">//这样Model和Entity的实例就能使用这个方法了</span><br></pre></td></tr></table></figure></p>
+<p>4.添加静态方法<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> Schema.static( 'say’, function()&#123;console.log(‘hello’);&#125; )</span><br><span class="line">//静态方法，只限于在Model层就能使用</span><br></pre></td></tr></table></figure></p>
+<p>5.追加方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> Schema.methods.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(‘hello’);&#125;;</span><br><span class="line"><span class="comment">//静态方法，只限于在Model层就能使用</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="model_-_文档操作">model - 文档操作</h2><p>1.构造函数, 参数1:集合名称, 参数2:Schema实例<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.model(<span class="string">"test1"</span>, TestSchema );</span><br></pre></td></tr></table></figure></p>
+<p>2.查询, 参数1忽略,或为空对象则返回所有集合文档<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">model.find(&#123;&#125;, callback);</span><br><span class="line"></span><br><span class="line">model.find(&#123;&#125;,field,callback);</span><br><span class="line">过滤查询,参数2: &#123;’name’:1, 'age’:0&#125; 查询文档的返回结果包含name , 不包含age.(_id默认是1)</span><br><span class="line"></span><br><span class="line">model.find(&#123;&#125;,null,&#123;limit:20&#125;);</span><br><span class="line">过滤查询,参数3: 游标操作 limit限制返回结果数量为20个,如不足20个则返回所有.</span><br><span class="line"></span><br><span class="line">model.findOne(&#123;&#125;, callback);</span><br><span class="line">查询找到的第一个文档</span><br><span class="line"></span><br><span class="line">model.findById('obj._id’, callback);</span><br><span class="line">查询找到的第一个文档,同上. 但是只接受 __id 的值查询</span><br></pre></td></tr></table></figure></p>
+<p>3.创建, 在集合中创建一个文档<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Model.create(文档数据, callback))</span><br></pre></td></tr></table></figure></p>
+<p>4.更新,参数1:查询条件, 参数2:更新对象,可以使用MondoDB的更新修改器<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Model.update(conditions, update, <span class="function"><span class="keyword">function</span>(<span class="params">error</span>)</span></span><br></pre></td></tr></table></figure></p>
+<p>5.删除, 参数1:查询条件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Model.remove(conditions,callback);</span><br></pre></td></tr></table></figure></p>
+<h2 id="Entity_-_文档操作">Entity - 文档操作</h2><p>1.构造函数, 其实就是model的实例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> TestModel( &#123; name:’xueyou’, age:<span class="number">21</span> &#125; );</span><br></pre></td></tr></table></figure>
+<p>2.创建, 在集合中创建一个文档.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Entity.save(callback);</span><br></pre></td></tr></table></figure></p>
+<h2 id="修改器和更新器">修改器和更新器</h2><h3 id="更新修改器:">更新修改器:</h3><p>‘$inc’ 增减修改器,只对数字有效.下面的实例: 找到 age=22的文档,修改文档的age值自增1<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Model.update(&#123;’age’:<span class="number">22</span>&#125;, &#123;’$inc’:&#123;’age’:<span class="number">1</span>&#125; &#125;  );</span><br><span class="line">执行后: age=<span class="number">23</span></span><br></pre></td></tr></table></figure></p>
+<p>‘$set’ 指定一个键的值,这个键不存在就创建它.可以是任何MondoDB支持的类型.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Model.update(&#123;’age’:<span class="number">22</span>&#125;, &#123;’$set’:&#123;’age’:’haha’&#125; &#125;  );</span><br><span class="line">执行后: age=’haha’</span><br></pre></td></tr></table></figure></p>
+<p>‘$unset’ 同上取反,删除一个键<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> Model.update(&#123;’age’:<span class="number">22</span>&#125;, &#123;’$unset’:&#123;’age’:’haha’&#125; &#125;  );</span><br><span class="line">执行后: age键不存在</span><br></pre></td></tr></table></figure></p>
+<h3 id="数组修改器:">数组修改器:</h3><p>‘$push’ 给一个键push一个数组成员,键不存在会创建<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> Model.update(&#123;’age’:<span class="number">22</span>&#125;, &#123;’$push’:&#123;’array’:<span class="number">10</span>&#125; &#125;  );</span><br><span class="line">执行后: 增加一个 array 键,类型为数组, 有一个成员 <span class="number">10</span></span><br></pre></td></tr></table></figure></p>
+<p>‘$addToSet’ 向数组中添加一个元素,如果存在就不添加<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> Model.update(&#123;’age’:<span class="number">22</span>&#125;, &#123;’$addToSet’:&#123;’array’:<span class="number">10</span>&#125; &#125;  );</span><br><span class="line">执行后: array中有<span class="number">10</span>所以不会添加</span><br></pre></td></tr></table></figure></p>
+<p>‘$each’ 遍历数组, 和 $push 修改器配合可以插入多个值<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> Model.update(&#123;’age’:<span class="number">22</span>&#125;, &#123;’$push’:&#123;’array’:&#123;’$each’: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]&#125;&#125; &#125;  );</span><br><span class="line">执行后: array : [<span class="number">10</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure></p>
+<p>‘$pop’ 向数组中尾部删除一个元素<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> Model.update(&#123;’age’:<span class="number">22</span>&#125;, &#123;’$pop’:&#123;’array’:<span class="number">1</span>&#125; &#125;  );</span><br><span class="line">执行后: array : [<span class="number">10</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]  tips: 将<span class="number">1</span>改成-<span class="number">1</span>可以删除数组首部元素</span><br></pre></td></tr></table></figure></p>
+<p>‘$pull’ 向数组中删除指定元素<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> Model.update(&#123;’age’:<span class="number">22</span>&#125;, &#123;’$pull’:&#123;’array’:<span class="number">10</span>&#125; &#125;  );</span><br><span class="line">执行后: array : [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]  匹配到array中的<span class="number">10</span>后将其删除</span><br></pre></td></tr></table></figure></p>
+<h3 id="条件查询:">条件查询:</h3><ul>
+<li>“$lt” 小于</li>
+<li>“$lte” 小于等于</li>
+<li>“$gt” 大于</li>
+<li>“$gte” 大于等于</li>
+<li>“$ne” 不等于</li>
+</ul>
+<blockquote>
+<p>Model.find({“age”:{ “$get”:18 , “$lte”:30 } } );</p>
+</blockquote>
+<p>查询 age 大于等于18并小于等于30的文档</p>
+<h3 id="或查询_OR:">或查询 OR:</h3><ul>
+<li>‘$in’ 一个键对应多个值</li>
+<li>‘$nin’ 同上取反, 一个键不对应指定值</li>
+<li>“$or” 多个条件匹配, 可以嵌套 $in 使用</li>
+<li>“$not” 同上取反, 查询与特定模式不匹配的文档<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Model.find(&#123;<span class="string">"age"</span>:&#123; <span class="string">"$in"</span>:[<span class="number">20</span>,<span class="number">21</span>,<span class="number">22.</span>’haha’]&#125; &#125; );</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>查询 age等于20或21或21或’haha’的文档<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Model.find(&#123;<span class="string">"$or"</span> :  [ &#123;’age’:<span class="number">18</span>&#125; , &#123;’name’:’xueyou’&#125; ] &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>查询 age等于18 或 name等于’xueyou’ 的文档</p>
+<h3 id="类型查询:">类型查询:</h3><p>null 能匹配自身和不存在的值, 想要匹配键的值 为null, 就要通过  “$exists” 条件判定键值已经存在“$exists” (表示是否存在的意思)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Model.find(“age” :  &#123; “$<span class="keyword">in</span>” : [<span class="literal">null</span>] , “exists” : <span class="literal">true</span>  &#125; );</span><br><span class="line">查询 age值为<span class="literal">null</span>的文档</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Model.find(&#123;name: &#123;$exists: <span class="literal">true</span>&#125;&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">error,docs</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//查询所有存在name属性的文档</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Model.find(&#123;telephone: &#123;$exists: <span class="literal">false</span>&#125;&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">error,docs</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//查询所有不存在telephone属性的文档</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="正则表达式:">正则表达式:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Model.find(&#123;<span class="string">"array"</span>:<span class="number">10</span>&#125; );</span><br><span class="line">查询 array(数组类型)键中有<span class="number">10</span>的文档,  array : [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">10</span>]  会匹配到</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Model.find(&#123;<span class="string">"array[5]"</span>:<span class="number">10</span>&#125; );</span><br><span class="line">查询 array(数组类型)键中下标<span class="number">5</span>对应的值是<span class="number">10</span>,  array : [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">10</span>]  会匹配到</span><br></pre></td></tr></table></figure>
+<p>‘$all’ 匹配数组中多个元素<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Model.find(&#123;<span class="string">"array"</span>:[<span class="number">5</span>,<span class="number">10</span>]&#125; );</span><br><span class="line">查询 匹配array数组中 既有<span class="number">5</span>又有<span class="number">10</span>的文档</span><br></pre></td></tr></table></figure></p>
+<p>‘$size’ 匹配数组长度<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Model.find(&#123;<span class="string">"array"</span>:&#123;<span class="string">"$size"</span> : <span class="number">3</span>&#125; &#125; );</span><br><span class="line">查询 匹配array数组长度为<span class="number">3</span> 的文档</span><br></pre></td></tr></table></figure></p>
+<p>‘$slice’ 查询子集合返回<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Model.find(&#123;<span class="string">"array"</span>:&#123;<span class="string">"$skice"</span> : <span class="number">10</span>&#125; &#125; );</span><br><span class="line">查询 匹配array数组的前<span class="number">10</span>个元素</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> Model.find(&#123;<span class="string">"array"</span>:&#123;<span class="string">"$skice"</span> : [<span class="number">5</span>,<span class="number">10</span>] &#125; &#125; );</span><br><span class="line">查询 匹配array数组的第<span class="number">5</span>个到第<span class="number">10</span>个元素</span><br></pre></td></tr></table></figure>
+<h3 id="where">where</h3><p>用它可以执行任意javacript语句作为查询的一部分,如果回调函数返回 true 文档就作为结果的一部分返回<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">find( &#123;<span class="string">"$where"</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">var</span> x <span class="keyword">in</span> <span class="keyword">this</span> )&#123;</span><br><span class="line">         <span class="comment">//这个函数中的 this 就是文档</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.x !== <span class="literal">null</span> &amp;&amp; <span class="keyword">this</span>.y !== <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.x + <span class="keyword">this</span>.y === <span class="number">10</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>简化版本<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find( &#123;<span class="string">"$where"</span> :  <span class="string">"this.x + this.y === 10"</span> &#125; )</span><br><span class="line">find( &#123;<span class="string">"$where"</span> : <span class="string">" function()&#123; return this.x + this.y ===10; &#125; "</span> &#125; )</span><br></pre></td></tr></table></figure></p>
+<h3 id="游标:">游标:</h3><ul>
+<li>limit(3) 限制返回结果的数量,</li>
+<li>skip(3) 跳过前3个文档,返回其余的</li>
+<li>sort( {“username”:1 , “age”:-1 } ) 排序 键对应文档的键名, 值代表排序方向, 1 升序, -1降序</li>
+</ul>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/09/01/markdown/" itemprop="url">
+                Markdown 超简明语法
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-01T13:37:57+08:00" content="2015-09-01">
+            2015-09-01
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/09/01/markdown/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/markdown/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Markdown_简明语法">Markdown 简明语法</h3><h3 id="标题">标题</h3><p>h1到h6由相应的#输出<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># h1 Heading</span></span><br><span class="line"><span class="preprocessor">## h2 Heading</span></span><br><span class="line"><span class="preprocessor">### h3 Heading</span></span><br><span class="line"><span class="preprocessor">#### h4 Heading</span></span><br><span class="line"><span class="preprocessor">##### h5 Heading</span></span><br><span class="line"><span class="preprocessor">###### h6 Heading</span></span><br></pre></td></tr></table></figure></p>
+<p>html:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">h1</span>&gt;</span>h1 Heading<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">h2</span>&gt;</span>h2 Heading<span class="tag">&lt;/<span class="title">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">h3</span>&gt;</span>h3 Heading<span class="tag">&lt;/<span class="title">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">h4</span>&gt;</span>h4 Heading<span class="tag">&lt;/<span class="title">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">h5</span>&gt;</span>h5 Heading<span class="tag">&lt;/<span class="title">h5</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">h6</span>&gt;</span>h6 Heading<span class="tag">&lt;/<span class="title">h6</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="水平线">水平线</h3><p>在html中<hr>为水平线，在段元素中，在markdown中</p>
+<ul>
+<li>___:三个连续的下划线</li>
+<li>—:三个破折号</li>
+<li>*** :三个星号</li>
+</ul>
+<h3 id="重点（加粗）">重点（加粗）</h3><p>为了强调文本可以<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">*</span><span class="keyword">*</span>rendered as bold text<span class="keyword">*</span><span class="keyword">*</span></span><br></pre></td></tr></table></figure></p>
+<p>HTML<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">strong</span>&gt;</span>rendered as bold text<span class="tag">&lt;/<span class="title">strong</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>###斜体<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_rendered <span class="keyword">as</span> italicized text_</span><br></pre></td></tr></table></figure></p>
+<p>HTML<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">em</span>&gt;</span>rendered as italicized text<span class="tag">&lt;/<span class="title">em</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="删除线">删除线</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~~Strike <span class="keyword">through</span> this <span class="type">text</span>.~~</span><br></pre></td></tr></table></figure>
+<h3 id="引用块">引用块</h3><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Add `&gt;` <span class="keyword">before</span> <span class="keyword">any</span> <span class="keyword">text</span> you want <span class="built_in">to</span> <span class="constant">quote</span>.</span><br></pre></td></tr></table></figure>
+<p>HTML<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">blockquote</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">p</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">blockquote</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>也可以嵌套<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; Donec massa lacus, ultricies <span class="tag">a</span> ullamcorper <span class="keyword">in</span>, fermentum sed augue. </span><br><span class="line">Nunc augue augue, aliquam non hendrerit ac, commodo vel nisi. </span><br><span class="line">&gt;&gt; Sed adipiscing elit vitae augue consectetur <span class="tag">a</span> gravida nunc vehicula. Donec auctor </span><br><span class="line">odio non est accumsan facilisis. Aliquam id turpis <span class="keyword">in</span> dolor tincidunt mollis ac eu diam.</span><br><span class="line">&gt;&gt;&gt; Donec massa lacus, ultricies <span class="tag">a</span> ullamcorper <span class="keyword">in</span>, fermentum sed augue. </span><br><span class="line">Nunc augue augue, aliquam non hendrerit ac, commodo vel nisi.</span><br></pre></td></tr></table></figure></p>
+<p>效果：</p>
+<blockquote>
+<p>Donec massa lacus, ultricies a ullamcorper in, fermentum sed augue.<br>Nunc augue augue, aliquam non hendrerit ac, commodo vel nisi. </p>
+<blockquote>
+<p>Sed adipiscing elit vitae augue consectetur a gravida nunc vehicula. Donec auctor<br>odio non est accumsan facilisis. Aliquam id turpis in dolor tincidunt mollis ac eu diam.</p>
+<blockquote>
+<p>Donec massa lacus, ultricies a ullamcorper in, fermentum sed augue.<br>Nunc augue augue, aliquam non hendrerit ac, commodo vel nisi. </p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 id="无序列表">无序列表</h3><p>你可以使用下面任何符号：<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">* </span>valid bullet</span><br><span class="line"><span class="bullet">- </span>valid bullet</span><br><span class="line"><span class="bullet">+ </span>valid bullet</span><br></pre></td></tr></table></figure></p>
+<p>例子：<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">+ Lo<span class="comment">rem ipsum dolor sit amet</span></span><br><span class="line">+ Consectetur adipiscing elit</span><br><span class="line">+ Integer molestie lo<span class="comment">rem at massa</span></span><br><span class="line">+ Facilisis <span class="flow">in</span> pretium nisl aliquet</span><br><span class="line">+ Nulla volutpat aliquam velit</span><br><span class="line">  - Phasellus iaculis neque</span><br><span class="line">  - Purus sodales ultricies</span><br><span class="line">  - Vestibulum laoreet porttitor sem</span><br><span class="line">  - Ac tristique libero volutpat <span class="built_in">at</span></span><br><span class="line">+ Faucibus porta lacus fringilla vel</span><br><span class="line">+ Aenean sit amet erat nunc</span><br><span class="line">+ Eget porttitor lo<span class="comment">rem</span></span><br></pre></td></tr></table></figure></p>
+<p>效果:</p>
+<ul>
+<li>Lorem ipsum dolor sit amet</li>
+<li>Consectetur adipiscing elit</li>
+<li>Integer molestie lorem at massa</li>
+<li>Facilisis in pretium nisl aliquet</li>
+<li>Nulla volutpat aliquam velit<ul>
+<li>Phasellus iaculis neque</li>
+<li>Purus sodales ultricies</li>
+<li>Vestibulum laoreet porttitor sem</li>
+<li>Ac tristique libero volutpat at</li>
+</ul>
+</li>
+<li>Faucibus porta lacus fringilla vel</li>
+<li>Aenean sit amet erat nunc</li>
+<li>Eget porttitor lorem</li>
+</ul>
+<p>HTML:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Lorem ipsum dolor sit amet<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Consectetur adipiscing elit<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Integer molestie lorem at massa<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Facilisis in pretium nisl aliquet<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Nulla volutpat aliquam velit</span><br><span class="line">    <span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">li</span>&gt;</span>Phasellus iaculis neque<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">li</span>&gt;</span>Purus sodales ultricies<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">li</span>&gt;</span>Vestibulum laoreet porttitor sem<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">li</span>&gt;</span>Ac tristique libero volutpat at<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Faucibus porta lacus fringilla vel<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Aenean sit amet erat nunc<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Eget porttitor lorem<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="有序列表">有序列表</h3><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. Lo<span class="comment">rem ipsum dolor sit amet</span></span><br><span class="line"><span class="number">2</span>. Consectetur adipiscing elit</span><br><span class="line"><span class="number">3</span>. Integer molestie lo<span class="comment">rem at massa</span></span><br><span class="line"><span class="number">4</span>. Facilisis <span class="flow">in</span> pretium nisl aliquet</span><br><span class="line"><span class="number">5</span>. Nulla volutpat aliquam velit</span><br><span class="line"><span class="number">6</span>. Faucibus porta lacus fringilla vel</span><br><span class="line"><span class="number">7</span>. Aenean sit amet erat nunc</span><br><span class="line"><span class="number">8</span>. Eget porttitor lo<span class="comment">rem</span></span><br></pre></td></tr></table></figure>
+<p>HTML:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Lorem ipsum dolor sit amet<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Consectetur adipiscing elit<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Integer molestie lorem at massa<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Facilisis in pretium nisl aliquet<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Nulla volutpat aliquam velit<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Faucibus porta lacus fringilla vel<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Aenean sit amet erat nunc<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Eget porttitor lorem<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ol</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>TIP:如果序号只写1. 的情况，github会帮助你完成顺序</p>
+<h3 id="code">code</h3><p>用“ ` ”包裹你的代码<br><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">For example, <span class="escape">`&lt;</span>section&gt;&lt;/section&gt;<span class="escape">` </span>should be wrapped as <span class="string">"inline"</span>.</span><br></pre></td></tr></table></figure></p>
+<h3 id="Block_code">Block code</h3><p>` ` ` html<br>Sample text here…<br>` ` `</p>
+<p>HTML:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">pre</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">p</span>&gt;</span>Sample text here...<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">pre</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="表格">表格</h3><p>通过管道符来连接table<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">|<span class="string"> Option </span>|<span class="string"> Description </span>|</span><br><span class="line">|<span class="string"> ------ </span>|<span class="string"> ----------- </span>|</span><br><span class="line">|<span class="string"> data   </span>|<span class="string"> path to data files to supply the data that will be passed into templates. </span>|</span><br><span class="line">|<span class="string"> engine </span>|<span class="string"> engine to be used for processing templates. Handlebars is the default. </span>|</span><br><span class="line">|<span class="string"> ext    </span>|<span class="string"> extension to be used for dest files. </span>|</span><br></pre></td></tr></table></figure></p>
+<p>效果:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>path to data files to supply the data that will be passed into templates.</td>
+</tr>
+<tr>
+<td>engine</td>
+<td>engine to be used for processing templates. Handlebars is the default.</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>extension to be used for dest files.</td>
+</tr>
+</tbody>
+</table>
+<p>HTML:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">table</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">th</span>&gt;</span>Option<span class="tag">&lt;/<span class="title">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">th</span>&gt;</span>Description<span class="tag">&lt;/<span class="title">th</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">td</span>&gt;</span>data<span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">td</span>&gt;</span>path to data files to supply the data that will be passed into templates.<span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">td</span>&gt;</span>engine<span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">td</span>&gt;</span>engine to be used for processing templates. Handlebars is the default.<span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">td</span>&gt;</span>ext<span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">td</span>&gt;</span>extension to be used for dest files.<span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">table</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="表格右对齐">表格右对齐</h3><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">|<span class="string"> Option </span>|<span class="string"> Description </span>|</span><br><span class="line">|<span class="string"> ------:</span>|<span class="string"> -----------:</span>|</span><br><span class="line">|<span class="string"> data   </span>|<span class="string"> path to data files to supply the data that will be passed into templates. </span>|</span><br><span class="line">|<span class="string"> engine </span>|<span class="string"> engine to be used for processing templates. Handlebars is the default. </span>|</span><br><span class="line">|<span class="string"> ext    </span>|<span class="string"> extension to be used for dest files. </span>|</span><br></pre></td></tr></table></figure>
+<p>效果</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Option</th>
+<th style="text-align:right">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">data</td>
+<td style="text-align:right">path to data files to supply the data that will be passed into templates.</td>
+</tr>
+<tr>
+<td style="text-align:right">engine</td>
+<td style="text-align:right">engine to be used for processing templates. Handlebars is the default.</td>
+</tr>
+<tr>
+<td style="text-align:right">ext</td>
+<td style="text-align:right">extension to be used for dest files.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="链接">链接</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="link_label">Docsren</span>](<span class="link_url">http://www.docs.ren</span>)</span><br></pre></td></tr></table></figure>
+<p>HTML:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"http://assemble.io"</span>&gt;</span>Assemble<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="为链接添加title">为链接添加title</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="link_label">Docsren</span>](<span class="link_url">http://www.docs.ren "index"</span>)</span><br></pre></td></tr></table></figure>
+<p>HTML:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"http://www.docs.ren"</span> <span class="attribute">title</span>=<span class="value">"index"</span>&gt;</span>Docsren<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="锚链接">锚链接</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="header"># Table of Contents</span></span><br><span class="line">  * [<span class="link_label">Chapter 1</span>](<span class="link_url">#chapter-1</span>)</span><br><span class="line">  * [<span class="link_label">Chapter 2</span>](<span class="link_url">#chapter-2</span>)</span><br><span class="line">  * [<span class="link_label">Chapter 3</span>](<span class="link_url">#chapter-3</span>)</span><br></pre></td></tr></table></figure>
+<p>会跳转到以下:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">## Chapter 1 <span class="tag">&lt;<span class="title">a</span> <span class="attribute">id</span>=<span class="value">"chapter-1"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">Content for chapter one.</span><br><span class="line"></span><br><span class="line">## Chapter 2 <span class="tag">&lt;<span class="title">a</span> <span class="attribute">id</span>=<span class="value">"chapter-2"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">Content for chapter one.</span><br><span class="line"></span><br><span class="line">## Chapter 3 <span class="tag">&lt;<span class="title">a</span> <span class="attribute">id</span>=<span class="value">"chapter-3"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">Content for chapter one.</span><br></pre></td></tr></table></figure></p>
+<h3 id="图片">图片</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="link_label">hello</span>](<span class="link_url">http://www.docs.ren/images/hello.png</span>)</span><br></pre></td></tr></table></figure>
+<p>or<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="link_label">Alt text</span>](<span class="link_url">http://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat"</span>)</span><br></pre></td></tr></table></figure></p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/09/01/gulp/" itemprop="url">
+                Gulp，新一代流行的任务自动管理工具
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-01T13:35:55+08:00" content="2015-09-01">
+            2015-09-01
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/09/01/gulp/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/gulp/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <ul>
+<li>官网：<a href="http://gulpjs.com">http://gulpjs.com</a></li>
+<li>API：<a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md">https://github.com/gulpjs/gulp/blob/master/docs/API.md</a></li>
+</ul>
+<blockquote>
+<p>Gulp与Grunt一样，也是一个自动任务运行器。它充分借鉴了Unix操作系统的管道（pipe）思想，很多人认为，在操作上，它要比Grunt简单。</p>
+</blockquote>
+<h3 id="安装">安装</h3><blockquote>
+<p>Gulp需要全局安装，然后再在项目的开发目录中安装为本地模块。先进入项目目录，运行下面的命令。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="operator"><span class="keyword">install</span> -<span class="keyword">g</span> gulp</span><br><span class="line"></span><br><span class="line">// 将gulp安装到项目本地</span><br><span class="line">npm <span class="keyword">install</span> <span class="comment">--save-dev gulp</span></span><br><span class="line">// 安装插件</span><br><span class="line">npm <span class="keyword">install</span> <span class="comment">--save-dev gulp-uglify</span></span><br><span class="line">npm <span class="keyword">install</span> gulp-jshint gulp-sass gulp-<span class="keyword">concat</span> gulp-uglify gulp-rename <span class="comment">--save-dev</span></span></span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/09/01/gulp/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/09/01/jqueryon/" itemprop="url">
+                jQuery on()方法绑定多个选择器,多个事件
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-01T13:31:16+08:00" content="2015-09-01">
+            2015-09-01
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/09/01/jqueryon/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/jqueryon/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>jQuery在1.7版本后，建议大家用on方法代替之前的bind、live、delegate方法。<br>那上面一句如果用on的话，怎么写呢？</p>
+<p>其实查看live源码就知道，live实际是委托doucment进行事件委派的。<br>按照这个思路，可以将on方法绑定到document即可。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).on(<span class="string">'click'</span>, <span class="string">'#header .fixed-feedback-bn, #sb-sec .feedback-bn'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">				<span class="comment">// code...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>还有一种情况，on()方法绑定多个事件，可以这样写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"table.planning_grid"</span>).on(&#123;</span><br><span class="line">    mouseenter: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// Handle mouseenter...</span></span><br><span class="line">    &#125;,</span><br><span class="line">    mouseleave: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// Handle mouseleave...</span></span><br><span class="line">    &#125;,</span><br><span class="line">    click: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// Handle click...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="string">"td"</span>);</span><br></pre></td></tr></table></figure>
+<p>最后，用on()方法绑定多个选择器，多个事件则可以这样写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).on(&#123;</span><br><span class="line">	mouseenter: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="comment">// Handle mouseenter...</span></span><br><span class="line">	&#125;,</span><br><span class="line">	mouseleave: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="comment">// Handle mouseleave...</span></span><br><span class="line">	&#125;,</span><br><span class="line">	click: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="comment">// Handle click...</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;, <span class="string">'#header .fixed-feedback-bn, #sb-sec .feedback-bn'</span>);</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/09/01/inputopt/" itemprop="url">
                 input 事件兼容处理以及中文输入法优化
               </a>
@@ -242,184 +719,13 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/01/gitauto/" itemprop="url">
-                Git命令自动补全
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-09-01T11:47:54+08:00" content="2015-09-01">
-            2015-09-01
-          </time>
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/09/01/gitauto/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/gitauto/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h1 id="自动补全">自动补全</h1><p>如果你用的是 Bash shell，可以试试看 Git 提供的自动补全脚本。下载 Git 的源代码，进入 contrib/completion 目录，会看到一个 git-completion.bash 文件。将此文件复制到你自己的用户主目录中（译注：按照下面的示例，还应改名加上点：cp git-completion.bash ~/.git-completion.bash），并把下面一行内容添加到你的 .bashrc 文件中：<br>或者(find / -iname git-completion.bash)</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/<span class="class">.git-completion</span><span class="class">.bash</span></span><br></pre></td></tr></table></figure>
-<p>在输入 Git 命令的时候可以敲两次跳格键（Tab），就会看到列出所有匹配的可用命令建议：</p>
-<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">$</span> <span class="comment">git</span> <span class="comment">co</span>&lt;<span class="comment">tab</span>&gt;&lt;<span class="comment">tab</span>&gt;</span><br><span class="line"><span class="comment">commit</span> <span class="comment">config</span></span><br><span class="line"></span><br><span class="line"><span class="comment">$</span> <span class="comment">git</span> <span class="comment">log</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">s</span>&lt;<span class="comment">tab</span>&gt;</span><br><span class="line"><span class="literal">-</span><span class="literal">-</span><span class="comment">shortstat</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">since=</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">src</span><span class="literal">-</span><span class="comment">prefix=</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">stat</span>   <span class="literal">-</span><span class="literal">-</span><span class="comment">summary</span></span><br></pre></td></tr></table></figure></span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/01/daimaguifan/" itemprop="url">
-                前端代码规范,类似google
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-09-01T11:38:28+08:00" content="2015-09-01">
-            2015-09-01
-          </time>
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/09/01/daimaguifan/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/daimaguifan/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>jade类以及内嵌js</p>
-</blockquote>
-<ul>
-<li>缩进为2，除了js声明 如：</li>
-</ul>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line"><span class="class">.form-group</span></span><br><span class="line">  <span class="tag">label</span><span class="class">.col-sm-2</span><span class="class">.control-label</span> 主机</span><br><span class="line">    <span class="class">.col-sm-6</span></span><br><span class="line">      <span class="tag">input</span>.<span class="function"><span class="title">form-control</span><span class="params">(type=<span class="string">"text"</span>, name=<span class="string">"host"</span>)</span></span></span><br></pre></td></tr></table></figure>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//js</span></span><br><span class="line"><span class="keyword">var</span> routeArr = [],</span><br><span class="line">    buttonType = $route.find(<span class="string">'button'</span>)[<span class="number">0</span>].dataset.type,</span><br><span class="line">    selectCollection = <span class="string">'custom'</span>;</span><br><span class="line">$.<span class="keyword">each</span>(selectCollection, <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">var</span> selectVal = <span class="keyword">this</span>.value;</span><br><span class="line">  <span class="keyword">if</span>(!<span class="keyword">this</span>.value)selectVal = <span class="string">'*'</span>;</span><br><span class="line">  routeArr.push(selectVal)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>通用前端规范</p>
-</blockquote>
-<h3 id="html规范">html规范</h3><ul>
-<li>排版缩进为4</li>
-<li>标签属性使用小写</li>
-<li>在HTML5规范里并没有严格要求属性值两边加引号。但考虑到一些属性可以接受空白值，为了保持一致性，我们要求所有属性值必须加上引号。</li>
-<li>段落分隔符要使用实际对应的 <code>&lt;p&gt;</code> 素，而不是用多个<code>&lt;br&gt;</code>标签。</li>
-<li>在合适的条件下，充分利用<code>&lt;dl&gt;</code> （定义列表）和<code>&lt;blockquote&gt;</code> 标签。</li>
-<li>列表中的条目必须总是放置于<code>&lt;ul&gt;</code>、<code>&lt;ol&gt;</code>或<code>&lt;dl&gt;</code> 中，永远不要用一组 <code>&lt;div&gt;</code>或<code>&lt;p&gt;</code> 来表示。</li>
-<li>给每个表单里的字段加上 <code>&lt;label&gt;</code> 标签，其中的 for 属性必须和对应的输入字段对应，这样用户就可以点击标签。同理，给标签加上 cursor:pointer; 样式也是明智的做法。</li>
-<li>多媒体标签向后兼容，记得加上alt属性</li>
-</ul>
-<h3 id="CSS规范–(like_google)">CSS规范–(like google)</h3><ul>
-<li>正确使用缩写，例如navigation就可以缩写为nav，而author就不要缩写</li>
-<li>id与class前不必加上标签类型</li>
-<li>属性尽量使用简写形式，如font或background等</li>
-<li>0后面不要加上单位</li>
-<li>小数前不要加上0</li>
-<li>url()中不要加入引号，例如@import url(//www.google.com/css/go.css);</li>
-<li>16进制尽量使用3位表示</li>
-<li>可以为项目加入前缀，例如.adw-help {} /<em> AdWords </em>/</li>
-<li>分词使用“-”，如前例</li>
-<li><p>属性采用字典序申明，包括前缀如moz安排在webkit之前</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/01/daimaguifan/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+  </nav>
+
  </div>
 
         
@@ -451,7 +757,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -465,7 +771,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

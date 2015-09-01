@@ -1,0 +1,787 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="前端开发,javascript,css3,html5,微信,博客" />
+
+
+
+  <meta name="keywords" content="Gulp,grunt," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Petitspois" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="官网：http://gulpjs.com
+API：https://github.com/gulpjs/gulp/blob/master/docs/API.md
+
+
+Gulp与Grunt一样，也是一个自动任务运行器。它充分借鉴了Unix操作系统的管道（pipe）思想，很多人认为，在操作上，它要比Grunt简单。
+
+安装
+Gulp需要全局安装，然后再在项目的开发目录中安装为本地模块。先进入项目目录，运">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gulp，新一代流行的任务自动管理工具">
+<meta property="og:url" content="http://yoursite.com/2015/09/01/gulp/index.html">
+<meta property="og:site_name" content="Petitspois">
+<meta property="og:description" content="官网：http://gulpjs.com
+API：https://github.com/gulpjs/gulp/blob/master/docs/API.md
+
+
+Gulp与Grunt一样，也是一个自动任务运行器。它充分借鉴了Unix操作系统的管道（pipe）思想，很多人认为，在操作上，它要比Grunt简单。
+
+安装
+Gulp需要全局安装，然后再在项目的开发目录中安装为本地模块。先进入项目目录，运">
+<meta property="og:updated_time" content="2015-09-01T05:35:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gulp，新一代流行的任务自动管理工具">
+<meta name="twitter:description" content="官网：http://gulpjs.com
+API：https://github.com/gulpjs/gulp/blob/master/docs/API.md
+
+
+Gulp与Grunt一样，也是一个自动任务运行器。它充分借鉴了Unix操作系统的管道（pipe）思想，很多人认为，在操作上，它要比Grunt简单。
+
+安装
+Gulp需要全局安装，然后再在项目的开发目录中安装为本地模块。先进入项目目录，运">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'hide'
+  };
+</script>
+
+  <title> Gulp，新一代流行的任务自动管理工具 | Petitspois </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?1275cad33c2bc4ebb08a1271d3309499";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">Petitspois</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              Gulp，新一代流行的任务自动管理工具
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-01T13:35:55+08:00" content="2015-09-01">
+            2015-09-01
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/09/01/gulp/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/gulp/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><ul>
+<li>官网：<a href="http://gulpjs.com" target="_blank" rel="external">http://gulpjs.com</a></li>
+<li>API：<a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md" target="_blank" rel="external">https://github.com/gulpjs/gulp/blob/master/docs/API.md</a></li>
+</ul>
+<blockquote>
+<p>Gulp与Grunt一样，也是一个自动任务运行器。它充分借鉴了Unix操作系统的管道（pipe）思想，很多人认为，在操作上，它要比Grunt简单。</p>
+</blockquote>
+<h3 id="安装">安装</h3><blockquote>
+<p>Gulp需要全局安装，然后再在项目的开发目录中安装为本地模块。先进入项目目录，运行下面的命令。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="operator"><span class="keyword">install</span> -<span class="keyword">g</span> gulp</span><br><span class="line"></span><br><span class="line">// 将gulp安装到项目本地</span><br><span class="line">npm <span class="keyword">install</span> <span class="comment">--save-dev gulp</span></span><br><span class="line">// 安装插件</span><br><span class="line">npm <span class="keyword">install</span> <span class="comment">--save-dev gulp-uglify</span></span><br><span class="line">npm <span class="keyword">install</span> gulp-jshint gulp-sass gulp-<span class="keyword">concat</span> gulp-uglify gulp-rename <span class="comment">--save-dev</span></span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="gulpfile-js">gulpfile.js</h3><blockquote>
+<p>项目根目录中的gulpfile.js，是Gulp的配置文件。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>下面就是一个典型的gulpfile.js文件。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</span><br><span class="line">    uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'minify'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(<span class="string">'js/app.js'</span>)</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'build'</span>))</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>gulp模块的task方法指定任务。task方法有两个参数，第一个是任务名，第二个是任务函数。</p>
+<p>在任务函数中：</p>
+<blockquote>
+<p>使用gulp模块的src方法，指定所要处理的文件，然后使用pipe方法，将上一步的输出转为当前的输入，进行链式处理。</p>
+<p>从上面的例子中可以看到，gulp充分使用了“管道”思想，就是一个数据流（stream）：src方法读入文件产生数据流，dest方法将数据流写入文件，中间是一些中间步骤，每一步都对数据流进行一些处理。</p>
+</blockquote>
+<p>gulp.src(‘js/app.js’)：指定所要处理的文件 pipe()：将上一步的输出转为当前的输入，进行链式处理。 uglify()：压缩源码 gulp.dest(‘build’)：将上一步的输出写入本地文件，这里是build.js（代码中省略了后缀名js）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入 gulp</span></span><br><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入组件</span></span><br><span class="line"><span class="keyword">var</span> jshint = <span class="built_in">require</span>(<span class="string">'gulp-jshint'</span>);</span><br><span class="line"><span class="keyword">var</span> sass = <span class="built_in">require</span>(<span class="string">'gulp-sass'</span>);</span><br><span class="line"><span class="keyword">var</span> concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>);</span><br><span class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>);</span><br><span class="line"><span class="keyword">var</span> rename = <span class="built_in">require</span>(<span class="string">'gulp-rename'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 检查脚本：Link任务会检查js/目录下得js文件有没有报错或警告。</span></span><br><span class="line">gulp.task(<span class="string">'lint'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(<span class="string">'./js/*.js'</span>)</span><br><span class="line">        .pipe(jshint())</span><br><span class="line">        .pipe(jshint.reporter(<span class="string">'default'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 编译Sass：Sass任务会编译scss/目录下的scss文件，并把编译完成的css文件保存到/css目录中。</span></span><br><span class="line">gulp.task(<span class="string">'sass'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(<span class="string">'./scss/*.scss'</span>)</span><br><span class="line">        .pipe(sass())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'./css'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 合并，压缩文件:scripts任务会合并js/目录下得所有得js文件并输出到dist/目录，然后gulp会重命名、压缩合并的文件，也输出到dist/目录。</span></span><br><span class="line">gulp.task(<span class="string">'scripts'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(<span class="string">'./js/*.js'</span>)</span><br><span class="line">        .pipe(concat(<span class="string">'all.js'</span>))</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'./dist'</span>))</span><br><span class="line">        .pipe(rename(<span class="string">'all.min.js'</span>))</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'./dist'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认任务:这时，我们创建了一个基于其他任务的default任务。使用.run()方法关联和运行我们上面定义的任务，使用.watch()方法去监听指定目录的文件变化，当有文件变化时，会运行回调定义的其他任务。</span></span><br><span class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.run(<span class="string">'lint'</span>, <span class="string">'sass'</span>, <span class="string">'scripts'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 监听文件变化</span></span><br><span class="line">    gulp.watch(<span class="string">'./js/*.js'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        gulp.run(<span class="string">'lint'</span>, <span class="string">'sass'</span>, <span class="string">'scripts'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>现在，回到命令行，可以直接运行gulp任务了 gulp 这将执行定义的default任务，换言之，这和以下的命令式同一个意思 gulp default</p>
+<h3 id="模块加载">模块加载</h3><p>1.gulpfile.js中一一加载模块</p>
+<p>gulpfile.js</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var gulp = <span class="keyword">require</span>(<span class="string">'gulp'</span>),</span><br><span class="line">    jshint = <span class="keyword">require</span>(<span class="string">'gulp-jshint'</span>),</span><br><span class="line">    uglify = <span class="keyword">require</span>(<span class="string">'gulp-uglify'</span>),</span><br><span class="line">    concat = <span class="keyword">require</span>(<span class="string">'gulp-concat'</span>);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'js'</span>, function() &#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'js/*.js'</span>)</span><br><span class="line">        .<span class="keyword">pipe</span>(jshint())</span><br><span class="line">        .<span class="keyword">pipe</span>(jshint.reporter(<span class="string">'default'</span>))</span><br><span class="line">        .<span class="keyword">pipe</span>(uglify())</span><br><span class="line">        .<span class="keyword">pipe</span>(concat(<span class="string">'app.js'</span>))</span><br><span class="line">        .<span class="keyword">pipe</span>(gulp.dest(<span class="string">'build'</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>2.使用gulp-load-plugins自动载入所有已安装的模块</p>
+<blockquote>
+<p>使用gulp-load-plugins模块，可以加载package.json文件中所有的gulp模块。</p>
+</blockquote>
+<p>package.json<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "<span class="attribute">devDependencies</span>": <span class="value">&#123;</span><br><span class="line">        "<span class="attribute">gulp-concat</span>": <span class="value"><span class="string">"~2.2.0"</span></span>,</span><br><span class="line">        "<span class="attribute">gulp-uglify</span>": <span class="value"><span class="string">"~0.2.1"</span></span>,</span><br><span class="line">        "<span class="attribute">gulp-jshint</span>": <span class="value"><span class="string">"~1.5.1"</span></span>,</span><br><span class="line">        "<span class="attribute">gulp</span>": <span class="value"><span class="string">"~3.5.6"</span></span><br><span class="line">    </span>&#125;</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure></p>
+<p>gulpfile.js</p>
+<figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var gulp = require<span class="params">('gulp')</span>,</span><br><span class="line">    gulpLoadPlugins = require<span class="params">('gulp-load-plugins')</span>,</span><br><span class="line">    plugins = gulpLoadPlugins<span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">gulp.task<span class="params">('js', function<span class="params">()</span> &#123;</span><br><span class="line">    return gulp.src<span class="params">('js/*.js')</span></span><br><span class="line">        .pipe<span class="params">(plugins.jshint<span class="params">()</span>)</span></span><br><span class="line">        .pipe<span class="params">(plugins.jshint.reporter<span class="params">('default')</span>)</span></span><br><span class="line">        .pipe<span class="params">(plugins.uglify<span class="params">()</span>)</span></span><br><span class="line">        .pipe<span class="params">(plugins.concat<span class="params">('app.js')</span>)</span></span><br><span class="line">        .pipe<span class="params">(gulp.dest<span class="params">('build')</span>)</span>;</span><br><span class="line">&#125;)</span>;</span><br></pre></td></tr></table></figure>
+<p>gulp.src()</p>
+<blockquote>
+<p>gulp模块的src方法，用于产生数据流。它的参数表示所要处理的文件，一般有以下几种形式。</p>
+</blockquote>
+<p>js/app.js：指定确切的文件名。 js/<em>.js：某个目录所有后缀名为js的文件。 js/\</em>*/*.js：某个目录及其所有子目录中的所有后缀名为js的文件。 !js/app.js：除了js/app.js以外的所有文件。 *.+(js|css)：匹配项目根目录下，所有后缀名为js或css的文件。 [‘js/*<em>/\</em>.js’, ‘!js/*<em>/\</em>.min.js’]：还可以是一个数组，用来指定多个成员。</p>
+<p>gulp.task()</p>
+<blockquote>
+<p>gulp模块的task方法，用于定义具体的任务。它的第一个参数是任务名，第二个参数是任务函数</p>
+</blockquote>
+<ul>
+<li>非常简单的任务函数：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">'greet'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Hello world!'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>task方法还可以指定按顺序运行的一组任务：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">'css'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'css...'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'js'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'js...'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'imgs'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'imgs...'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'build'</span>, [<span class="string">'css'</span>, <span class="string">'js'</span>, <span class="string">'imgs'</span>]);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上面代码先指定build任务，它按次序由css、js、imgs三个任务所组成。注意，由于每个任务都是异步调用，所以没有办法保证js任务的开始运行的时间，正是css任务运行结束。</p>
+</blockquote>
+<ul>
+<li>任务严格按次序运行：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">'greet'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Hello world!'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'css'</span>, [<span class="string">'greet'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'css...'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'js'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'js...'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'build'</span>, [<span class="string">'css'</span>, <span class="string">'js'</span>]);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上面代码表明，css任务依赖greet任务，所以css一定会在greet运行完成后再运行。</p>
+</blockquote>
+<ul>
+<li>默认任务：</li>
+</ul>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Your default task</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果一个任务的名字为default，就表明它是“默认任务”，在命令行直接输入gulp命令，就会运行该任务。</p>
+</blockquote>
+<p>gulp.watch()</p>
+<blockquote>
+<p>gulp模块的watch方法，用于指定需要监视的文件。一旦这些文件发生变动，就运行指定任务。</p>
+</blockquote>
+<ul>
+<li>watch方法</li>
+</ul>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">'watch'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    gulp.watch(<span class="string">'templates/*.tmpl.html'</span>, [<span class="string">'build'</span>]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上面代码指定，一旦templates目录中的模板文件发生变化，就运行build任务。</p>
+</blockquote>
+<ul>
+<li>watch方法也可以用回调函数，代替指定的任务。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gulp.watch(<span class="string">'templates/*.tmpl.html'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Event type: '</span> + event.type);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Event path: '</span> + event.path);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>另一种写法是watch方法所监控的文件发生变化时（修改、增加、删除文件），会触发change事件。可以对change事件指定回调函数。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> watcher = gulp.watch(<span class="string">'templates/*.tmpl.html'</span>, [<span class="string">'build'</span>]);</span><br><span class="line"></span><br><span class="line">watcher.on(<span class="string">'change'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Event type: '</span> + event.type);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Event path: '</span> + event.path);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>除了change事件，watch方法还可能触发以下事件：</p>
+<ul>
+<li>end：回调函数运行完毕时触发。</li>
+<li>error：发生错误时触发。</li>
+<li>ready：当开始监听文件时触发。</li>
+<li>nomatch：没有匹配的监听文件时触发。</li>
+<li>watcher对象还包含其他一些方法。</li>
+<li>watcher.end()：停止 watcher对象，不会再调用任务或回调函数。</li>
+<li>watcher.files()：返回 watcher对象监视的文件。</li>
+<li>watcher.add(glob)：增加所要监视的文件，它还可以附件第二个参数，表示回调函数。</li>
+<li>watcher.remove(filepath)：从 watcher对象中移走一个监视的文件。</li>
+</ul>
+<h3 id="模块">模块</h3><ul>
+<li><p>gulp-load-plugins模块（如上）</p>
+</li>
+<li><p>gulp-livereload：模块用于自动刷新浏览器，反映出源码的最新变化。它除了模块以外，还需要在浏览器中安装插件，用来配合源码变化。</p>
+</li>
+</ul>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var gulp = require(<span class="symbol">'gulp'</span>),</span><br><span class="line">    less = require(<span class="symbol">'gulp</span>-less'),</span><br><span class="line">    livereload = require(<span class="symbol">'gulp</span>-livereload'),</span><br><span class="line">    watch = require(<span class="symbol">'gulp</span>-watch');</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="symbol">'less'</span>, <span class="keyword">function</span><span class="literal">()</span> &#123;</span><br><span class="line">    gulp.src(<span class="symbol">'less</span>/*.less')</span><br><span class="line">        .pipe(watch<span class="literal">()</span>)</span><br><span class="line">        .pipe(less<span class="literal">()</span>)</span><br><span class="line">        .pipe(gulp.dest(<span class="symbol">'css'</span>))</span><br><span class="line">        .pipe(livereload<span class="literal">()</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>上面代码监视less文件，一旦编译完成，就自动刷新浏览器。</p>
+<p>自动载入(gulp-load-plugins) 编译Sass (gulp-ruby-sass) Autoprefixer (gulp-autoprefixer) 缩小化(minify)CSS (gulp-minify-css) JSHint (gulp-jshint) 拼接 (gulp-concat) 丑化(Uglify) (gulp-uglify) 图片压缩 (gulp-imagemin) 即时重整(LiveReload) (gulp-livereload) 清理档案 (gulp-clean) 图片快取，只有更改过得图片会进行压缩 (gulp-cache) 更动通知 (gulp-notify)</p>
+<p>gulp-less : less gulp-ruby-sass : 支持sass gulp-minify-css : 压缩css gulp-jshint : 检查js gulp-uglify : 压缩js gulp-concat : 合并文件 gulp-rename : 重命名文件 gulp-htmlmin : 压缩html gulp-clean : 清空文件夹</p>
+<p>执行下列指令来安装这些外挂：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="operator"><span class="keyword">install</span> gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-<span class="keyword">concat</span> gulp-uglify gulp-imagemin gulp-clean gulp-notify gulp-rename gulp-livereload gulp-<span class="keyword">cache</span> <span class="comment">--save-dev</span></span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>指令将会安装必要的外挂，并纪录于package.json内的devDependencies物件。完整的gulp外挂清单可以在这裡找到。 <a href="http://gratimax.net/search-gulp-plugins" target="_blank" rel="external">http://gratimax.net/search-gulp-plugins</a></p>
+</blockquote>
+<h3 id="配置事例">配置事例</h3><p>示例配置：Gulp 实现完整的 SASS 自动编译并刷新网页</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Include gulp</span></span><br><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Include Our Plugins</span></span><br><span class="line"><span class="keyword">var</span> sass = <span class="built_in">require</span>(<span class="string">'gulp-sass'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> lr = <span class="built_in">require</span>(<span class="string">'tiny-lr'</span>),</span><br><span class="line">    refresh = <span class="built_in">require</span>(<span class="string">'gulp-livereload'</span>),</span><br><span class="line">    server = lr();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Task SASS</span></span><br><span class="line">gulp.task(<span class="string">'sass'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.src([</span><br><span class="line">        <span class="string">'scss/**/*.scss'</span>,</span><br><span class="line">        <span class="string">'!scss/**/_*.scss'</span></span><br><span class="line">    ])</span><br><span class="line">        .pipe(sass(&#123;</span><br><span class="line">            includePaths: [<span class="string">'scss'</span>]</span><br><span class="line">        &#125;))</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'css'</span>))</span><br><span class="line">        .pipe(refresh(server));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'refresh'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.src([</span><br><span class="line">        <span class="string">'**/*.html'</span>,</span><br><span class="line">        <span class="string">'**/*.php'</span></span><br><span class="line">    ])</span><br><span class="line">        .pipe(refresh(server));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Task: default</span></span><br><span class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.run(<span class="string">'sass'</span>);</span><br><span class="line"></span><br><span class="line">    server.listen(<span class="number">35729</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (error) <span class="keyword">return</span> <span class="built_in">console</span>.log(error);</span><br><span class="line"></span><br><span class="line">        gulp.watch([</span><br><span class="line">            <span class="string">'scss/**'</span>,</span><br><span class="line">            <span class="string">'img/**'</span></span><br><span class="line">        ], <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">            gulp.run(<span class="string">'sass'</span>);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        gulp.watch([</span><br><span class="line">            <span class="string">'**/*.html'</span>,</span><br><span class="line">            <span class="string">'**.php'</span></span><br><span class="line">        ], <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">            gulp.run(<span class="string">'refresh'</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>gulpfile.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入组件</span></span><br><span class="line"><span class="keyword">var</span> less = <span class="built_in">require</span>(<span class="string">'gulp-less'</span>), <span class="comment">// less</span></span><br><span class="line">  minifycss = <span class="built_in">require</span>(<span class="string">'gulp-minify-css'</span>), <span class="comment">// CSS压缩</span></span><br><span class="line">  uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>), <span class="comment">// js压缩</span></span><br><span class="line">  concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>), <span class="comment">// 合并文件</span></span><br><span class="line">  rename = <span class="built_in">require</span>(<span class="string">'gulp-rename'</span>), <span class="comment">// 重命名</span></span><br><span class="line">  clean = <span class="built_in">require</span>(<span class="string">'gulp-clean'</span>); <span class="comment">//清空文件夹</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// less解析</span></span><br><span class="line">gulp.task(<span class="string">'build-less'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  gulp.src(<span class="string">'./javis/static/less/lib/s-production.less'</span>)</span><br><span class="line">    .pipe(less())</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./javis/static/build/css/lib/'</span>))</span><br><span class="line"></span><br><span class="line">  gulp.src(<span class="string">'./javis/static/less/lib/s-skins.less'</span>)</span><br><span class="line">    .pipe(less())</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./javis/static/build/css/lib/'</span>))</span><br><span class="line"></span><br><span class="line">  gulp.src(<span class="string">'./javis/static/less/lib/s/s.less'</span>)</span><br><span class="line">    .pipe(less())</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./javis/static/build/css/lib/'</span>))</span><br><span class="line"></span><br><span class="line">  gulp.src(<span class="string">'./javis/static/less/*.less'</span>)</span><br><span class="line">    .pipe(less())</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./javis/static/build/css/'</span>))</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 合并、压缩、重命名css</span></span><br><span class="line">gulp.task(<span class="string">'stylesheets'</span>, [<span class="string">'build-less'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 注意这里通过数组的方式写入两个地址,仔细看第一个地址是css目录下的全部css文件,第二个地址是css目录下的areaMap.css文件,但是它前面加了!,这个和.gitignore的写法类似,就是排除掉这个文件.</span></span><br><span class="line">  gulp.src([<span class="string">'./javis/static/build/css/*.css'</span>, <span class="string">'!./javis/static/build/css/areaMap.css'</span>])</span><br><span class="line">    .pipe(concat(<span class="string">'all.css'</span>))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./javis/static/build/css/'</span>))</span><br><span class="line">    .pipe(rename(&#123;</span><br><span class="line">      suffix: <span class="string">'.min'</span></span><br><span class="line">    &#125;))</span><br><span class="line">    .pipe(minifycss())</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./javis/static/build/css'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 合并，压缩js文件</span></span><br><span class="line">gulp.task(<span class="string">'javascripts'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  gulp.src(<span class="string">'./javis/static/js/*.js'</span>)</span><br><span class="line">    .pipe(concat(<span class="string">'all.js'</span>))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./javis/static/build/js'</span>))</span><br><span class="line">    .pipe(rename(&#123;</span><br><span class="line">      suffix: <span class="string">'.min'</span></span><br><span class="line">    &#125;))</span><br><span class="line">    .pipe(uglify())</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./javis/static/build/js'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 清空图片、样式、js</span></span><br><span class="line">gulp.task(<span class="string">'clean'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src([<span class="string">'./javis/static/build/css/all.css'</span>, <span class="string">'./javis/static/build/css/all.min.css'</span>], &#123;</span><br><span class="line">    read: <span class="literal">false</span></span><br><span class="line">  &#125;)</span><br><span class="line">    .pipe(clean(&#123;</span><br><span class="line">      force: <span class="literal">true</span></span><br><span class="line">    &#125;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将bower的库文件对应到指定位置</span></span><br><span class="line">gulp.task(<span class="string">'buildlib'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  gulp.src(<span class="string">'./bower_components/angular/angular.min.js'</span>)</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./javis/static/build/js/'</span>))</span><br><span class="line"></span><br><span class="line">  gulp.src(<span class="string">'./bower_components/angular/angular.js'</span>)</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./javis/static/build/js/'</span>))</span><br><span class="line"></span><br><span class="line">  gulp.src(<span class="string">'./bower_components/bootstrap/dist/js/bootstrap.min.js'</span>)</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./javis/static/build/js/'</span>))</span><br><span class="line"></span><br><span class="line">  gulp.src(<span class="string">'./bower_components/jquery/dist/jquery.min.js'</span>)</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./javis/static/build/js/'</span>))</span><br><span class="line"></span><br><span class="line">  gulp.src(<span class="string">'./bower_components/angular-route/angular-route.min.js'</span>)</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./javis/static/build/js/'</span>))</span><br><span class="line"></span><br><span class="line">  gulp.src(<span class="string">'./bower_components/angular-animate/angular-animate.min.js'</span>)</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./javis/static/build/js/'</span>))</span><br><span class="line"></span><br><span class="line">  gulp.src(<span class="string">'./bower_components/angular-bootstrap/ui-bootstrap.min.js'</span>)</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./javis/static/build/js/'</span>))</span><br><span class="line"></span><br><span class="line">  gulp.src(<span class="string">'./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js'</span>)</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./javis/static/build/js/'</span>))</span><br><span class="line"></span><br><span class="line">  <span class="comment">//--------------------------css-------------------------------------</span></span><br><span class="line"></span><br><span class="line">  gulp.src(<span class="string">'./javis/static/less/fonts/*'</span>)</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./javis/static/build/css/fonts/'</span>))</span><br><span class="line"></span><br><span class="line">  gulp.src(<span class="string">'./bower_components/bootstrap/fonts/*'</span>)</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./javis/static/build/css/fonts/'</span>))</span><br><span class="line"></span><br><span class="line">  gulp.src(<span class="string">'./bower_components/bootstrap/dist/css/bootstrap.min.css'</span>)</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./javis/static/build/css/lib'</span>))</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义develop任务在日常开发中使用</span></span><br><span class="line">gulp.task(<span class="string">'develop'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  gulp.run(<span class="string">'buildlib'</span>, <span class="string">'build-less'</span>, <span class="string">'javascripts'</span>, <span class="string">'stylesheets'</span>);</span><br><span class="line"></span><br><span class="line">  gulp.watch(<span class="string">'./javis/static/less/*.less'</span>, [<span class="string">'build-less'</span>]);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个prod任务作为发布或者运行时使用</span></span><br><span class="line">gulp.task(<span class="string">'prod'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  gulp.run(<span class="string">'buildlib'</span>, <span class="string">'build-less'</span>, <span class="string">'stylesheets'</span>, <span class="string">'javascripts'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 监听.less文件,一旦有变化,立刻调用build-less任务执行</span></span><br><span class="line">  gulp.watch(<span class="string">'./javis/static/less/*.less'</span>, [<span class="string">'build-less'</span>]);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// gulp命令默认启动的就是default认为,这里将clean任务作为依赖,也就是先执行一次clean任务,流程再继续.</span></span><br><span class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'clean'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  gulp.run(<span class="string">'develop'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="gulp_与_Grunt">gulp 与 Grunt</h3><p>gulpfile.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*!</span><br><span class="line"> * gulp</span><br><span class="line"> * $ npm install gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify gulp-rename gulp-livereload gulp-cache del --save-dev</span><br><span class="line"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Load plugins</span></span><br><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</span><br><span class="line">  sass = <span class="built_in">require</span>(<span class="string">'gulp-ruby-sass'</span>),</span><br><span class="line">  autoprefixer = <span class="built_in">require</span>(<span class="string">'gulp-autoprefixer'</span>),</span><br><span class="line">  minifycss = <span class="built_in">require</span>(<span class="string">'gulp-minify-css'</span>),</span><br><span class="line">  jshint = <span class="built_in">require</span>(<span class="string">'gulp-jshint'</span>),</span><br><span class="line">  uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>),</span><br><span class="line">  imagemin = <span class="built_in">require</span>(<span class="string">'gulp-imagemin'</span>),</span><br><span class="line">  rename = <span class="built_in">require</span>(<span class="string">'gulp-rename'</span>),</span><br><span class="line">  concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>),</span><br><span class="line">  notify = <span class="built_in">require</span>(<span class="string">'gulp-notify'</span>),</span><br><span class="line">  cache = <span class="built_in">require</span>(<span class="string">'gulp-cache'</span>),</span><br><span class="line">  livereload = <span class="built_in">require</span>(<span class="string">'gulp-livereload'</span>),</span><br><span class="line">  del = <span class="built_in">require</span>(<span class="string">'del'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Styles</span></span><br><span class="line">gulp.task(<span class="string">'styles'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'src/styles/main.scss'</span>)</span><br><span class="line">    .pipe(sass(&#123;</span><br><span class="line">      style: <span class="string">'expanded'</span>,</span><br><span class="line">    &#125;))</span><br><span class="line">    .pipe(autoprefixer(<span class="string">'last 2 version'</span>, <span class="string">'safari 5'</span>, <span class="string">'ie 8'</span>, <span class="string">'ie 9'</span>, <span class="string">'opera 12.1'</span>, <span class="string">'ios 6'</span>, <span class="string">'android 4'</span>))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist/styles'</span>))</span><br><span class="line">    .pipe(rename(&#123;</span><br><span class="line">      suffix: <span class="string">'.min'</span></span><br><span class="line">    &#125;))</span><br><span class="line">    .pipe(minifycss())</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist/styles'</span>))</span><br><span class="line">    .pipe(notify(&#123;</span><br><span class="line">      message: <span class="string">'Styles task complete'</span></span><br><span class="line">    &#125;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Scripts</span></span><br><span class="line">gulp.task(<span class="string">'scripts'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'src/scripts/**/*.js'</span>)</span><br><span class="line">    .pipe(jshint(<span class="string">'.jshintrc'</span>))</span><br><span class="line">    .pipe(jshint.reporter(<span class="string">'default'</span>))</span><br><span class="line">    .pipe(concat(<span class="string">'main.js'</span>))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist/scripts'</span>))</span><br><span class="line">    .pipe(rename(&#123;</span><br><span class="line">      suffix: <span class="string">'.min'</span></span><br><span class="line">    &#125;))</span><br><span class="line">    .pipe(uglify())</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist/scripts'</span>))</span><br><span class="line">    .pipe(notify(&#123;</span><br><span class="line">      message: <span class="string">'Scripts task complete'</span></span><br><span class="line">    &#125;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Images</span></span><br><span class="line">gulp.task(<span class="string">'images'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'src/images/**/*'</span>)</span><br><span class="line">    .pipe(cache(imagemin(&#123;</span><br><span class="line">      optimizationLevel: <span class="number">3</span>,</span><br><span class="line">      progressive: <span class="literal">true</span>,</span><br><span class="line">      interlaced: <span class="literal">true</span></span><br><span class="line">    &#125;)))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist/images'</span>))</span><br><span class="line">    .pipe(notify(&#123;</span><br><span class="line">      message: <span class="string">'Images task complete'</span></span><br><span class="line">    &#125;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Clean</span></span><br><span class="line">gulp.task(<span class="string">'clean'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">cb</span>) </span>&#123;</span><br><span class="line">  del([<span class="string">'dist/assets/css'</span>, <span class="string">'dist/assets/js'</span>, <span class="string">'dist/assets/img'</span>], cb)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Default task</span></span><br><span class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'clean'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  gulp.start(<span class="string">'styles'</span>, <span class="string">'scripts'</span>, <span class="string">'images'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Watch</span></span><br><span class="line">gulp.task(<span class="string">'watch'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Watch .scss files</span></span><br><span class="line">  gulp.watch(<span class="string">'src/styles/**/*.scss'</span>, [<span class="string">'styles'</span>]);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Watch .js files</span></span><br><span class="line">  gulp.watch(<span class="string">'src/scripts/**/*.js'</span>, [<span class="string">'scripts'</span>]);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Watch image files</span></span><br><span class="line">  gulp.watch(<span class="string">'src/images/**/*'</span>, [<span class="string">'images'</span>]);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Create LiveReload server</span></span><br><span class="line">  livereload.listen();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Watch any files in dist/, reload on change</span></span><br><span class="line">  gulp.watch([<span class="string">'dist/**'</span>]).on(<span class="string">'change'</span>, livereload.changed);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Gruntfile.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/*!</span><br><span class="line"> * Grunt</span><br><span class="line"> * $ npm install grunt-contrib-uglify grunt-autoprefixer grunt-contrib-cssmin grunt-contrib-imagemin grunt-contrib-sass grunt-contrib-watch grunt-contrib-concat grunt-contrib-clean grunt-contrib-jshint grunt-notify --save-dev</span><br><span class="line"> */</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">grunt</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  grunt.initConfig(&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sass</span></span><br><span class="line">    sass: &#123;</span><br><span class="line">      dist: &#123;</span><br><span class="line">        options: &#123;</span><br><span class="line">          style: <span class="string">'expanded'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        files: &#123;</span><br><span class="line">          <span class="string">'dist/styles/main.css'</span>: <span class="string">'src/styles/main.scss'</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Autoprefix</span></span><br><span class="line">    autoprefixer: &#123;</span><br><span class="line">      options: &#123;</span><br><span class="line">        browsers: [</span><br><span class="line">          <span class="string">'last 2 version'</span>, <span class="string">'safari 5'</span>, <span class="string">'ie 8'</span>, <span class="string">'ie 9'</span>, <span class="string">'opera 12.1'</span>, <span class="string">'ios 6'</span>, <span class="string">'android 4'</span></span><br><span class="line">        ]</span><br><span class="line">      &#125;,</span><br><span class="line">      dist: &#123;</span><br><span class="line">        src: <span class="string">'dist/styles/main.css'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// CSS minify</span></span><br><span class="line">    cssmin: &#123;</span><br><span class="line">      dist: &#123;</span><br><span class="line">        files: &#123;</span><br><span class="line">          <span class="string">'dist/styles/main.min.css'</span>: <span class="string">'dist/styles/main.css'</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// JShint</span></span><br><span class="line">    jshint: &#123;</span><br><span class="line">      files: [<span class="string">'src/scripts/**/*.js'</span>],</span><br><span class="line">      options: &#123;</span><br><span class="line">        jshintrc: <span class="string">'.jshintrc'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Concat</span></span><br><span class="line">    concat: &#123;</span><br><span class="line">      js: &#123;</span><br><span class="line">        src: [<span class="string">'src/scripts/**/*.js'</span>],</span><br><span class="line">        dest: <span class="string">'dist/scripts/main.js'</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Uglify</span></span><br><span class="line">    uglify: &#123;</span><br><span class="line">      dist: &#123;</span><br><span class="line">        src: <span class="string">'dist/scripts/main.js'</span>,</span><br><span class="line">        dest: <span class="string">'dist/scripts/main.min.js'</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Imagemin</span></span><br><span class="line">    imagemin: &#123;</span><br><span class="line">      dist: &#123;</span><br><span class="line">        options: &#123;</span><br><span class="line">          optimizationLevel: <span class="number">3</span>,</span><br><span class="line">          progressive: <span class="literal">true</span>,</span><br><span class="line">          interlaced: <span class="literal">true</span></span><br><span class="line">        &#125;,</span><br><span class="line">        files: [&#123;</span><br><span class="line">          expand: <span class="literal">true</span>,</span><br><span class="line">          cwd: <span class="string">'src/images'</span>,</span><br><span class="line">          src: [<span class="string">'**/*.&#123;png,jpg,gif&#125;'</span>],</span><br><span class="line">          dest: <span class="string">'dist/images'</span></span><br><span class="line">        &#125;]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Clean</span></span><br><span class="line">    clean: &#123;</span><br><span class="line">      build: [<span class="string">'dist/styles'</span>, <span class="string">'dist/scripts'</span>, <span class="string">'dist/images'</span>]</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Notify</span></span><br><span class="line">    notify: &#123;</span><br><span class="line">      styles: &#123;</span><br><span class="line">        options: &#123;</span><br><span class="line">          message: <span class="string">'Styles task complete'</span>,</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      scripts: &#123;</span><br><span class="line">        options: &#123;</span><br><span class="line">          message: <span class="string">'Scripts task complete'</span>,</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      images: &#123;</span><br><span class="line">        options: &#123;</span><br><span class="line">          message: <span class="string">'Images task complete'</span>,</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Watch</span></span><br><span class="line">    watch: &#123;</span><br><span class="line">      styles: &#123;</span><br><span class="line">        files: <span class="string">'src/styles/**/*.scss'</span>,</span><br><span class="line">        tasks: [<span class="string">'sass'</span>, <span class="string">'autoprefixer'</span>, <span class="string">'cssmin'</span>, <span class="string">'notify:styles'</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">      scripts: &#123;</span><br><span class="line">        files: <span class="string">'src/scripts/**/*.js'</span>,</span><br><span class="line">        tasks: [<span class="string">'concat'</span>, <span class="string">'uglify'</span>, <span class="string">'notify:scripts'</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">      images: &#123;</span><br><span class="line">        files: <span class="string">'src/images/**/*'</span>,</span><br><span class="line">        tasks: [<span class="string">'imagemin'</span>, <span class="string">'notify:images'</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">      livereload: &#123;</span><br><span class="line">        options: &#123;</span><br><span class="line">          livereload: <span class="literal">true</span></span><br><span class="line">        &#125;,</span><br><span class="line">        files: [</span><br><span class="line">          <span class="string">'dist/styles/**/*.css'</span>,</span><br><span class="line">          <span class="string">'dist/scripts/**/*.js'</span>,</span><br><span class="line">          <span class="string">'dist/images/**/*'</span></span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Default task</span></span><br><span class="line">  grunt.registerTask(<span class="string">'default'</span>, [</span><br><span class="line">    <span class="string">'jshint'</span>,</span><br><span class="line">    <span class="string">'clean'</span>,</span><br><span class="line">    <span class="string">'concat'</span>,</span><br><span class="line">    <span class="string">'uglify'</span>,</span><br><span class="line">    <span class="string">'sass'</span>,</span><br><span class="line">    <span class="string">'autoprefixer'</span>,</span><br><span class="line">    <span class="string">'cssmin'</span>,</span><br><span class="line">    <span class="string">'imagemin'</span></span><br><span class="line">  ]);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Load plugins</span></span><br><span class="line">  grunt.loadNpmTasks(<span class="string">'grunt-contrib-uglify'</span>);</span><br><span class="line">  grunt.loadNpmTasks(<span class="string">'grunt-autoprefixer'</span>);</span><br><span class="line">  grunt.loadNpmTasks(<span class="string">'grunt-contrib-cssmin'</span>);</span><br><span class="line">  grunt.loadNpmTasks(<span class="string">'grunt-contrib-sass'</span>);</span><br><span class="line">  grunt.loadNpmTasks(<span class="string">'grunt-contrib-watch'</span>);</span><br><span class="line">  grunt.loadNpmTasks(<span class="string">'grunt-contrib-concat'</span>);</span><br><span class="line">  grunt.loadNpmTasks(<span class="string">'grunt-contrib-jshint'</span>);</span><br><span class="line">  grunt.loadNpmTasks(<span class="string">'grunt-contrib-imagemin'</span>);</span><br><span class="line">  grunt.loadNpmTasks(<span class="string">'grunt-contrib-clean'</span>);</span><br><span class="line">  grunt.loadNpmTasks(<span class="string">'grunt-notify'</span>);</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Gulp/" rel="tag">#Gulp</a>
+          
+            <a href="/tags/grunt/" rel="tag">#grunt</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/01/markdown/" rel="prev">Markdown 超简明语法</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/01/jqueryon/" rel="next">jQuery on()方法绑定多个选择器,多个事件</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/09/01/gulp/"
+                   data-title="Gulp，新一代流行的任务自动管理工具" data-url="http://yoursite.com/2015/09/01/gulp/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="Petitspois" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Petitspois</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">前端开发,javascript,css3,html5,微信,博客</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/petitspois" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2882105185" target="_blank">weibo</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gulpfile-js"><span class="nav-number">2.</span> <span class="nav-text">gulpfile.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块加载"><span class="nav-number">3.</span> <span class="nav-text">模块加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块"><span class="nav-number">4.</span> <span class="nav-text">模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置事例"><span class="nav-number">5.</span> <span class="nav-text">配置事例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gulp_与_Grunt"><span class="nav-number">6.</span> <span class="nav-text">gulp 与 Grunt</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Petitspois</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"petitspois"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

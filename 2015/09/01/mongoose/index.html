@@ -1,0 +1,718 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="前端开发,javascript,css3,html5,微信,博客" />
+
+
+
+  <meta name="keywords" content="mongoose," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Petitspois" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="MongooseMongoose 是什么?一般我们不直接用MongoDB的函数来操作MongoDB数据库 Mongose就是一套操作MongoDB数据库的接口.
+Schema一种以文件形式存储的数据库模型骨架，无法直接通往数据库端，也就是说它不具备对数据库的操作能力.可以说是数据属性模型(传统意义的表结构)，又或着是“集合”的模型骨架
+123456789/* 定义一个 Schema */var m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Petitspois">
+<meta property="og:url" content="http://yoursite.com/2015/09/01/mongoose/index.html">
+<meta property="og:site_name" content="Petitspois">
+<meta property="og:description" content="MongooseMongoose 是什么?一般我们不直接用MongoDB的函数来操作MongoDB数据库 Mongose就是一套操作MongoDB数据库的接口.
+Schema一种以文件形式存储的数据库模型骨架，无法直接通往数据库端，也就是说它不具备对数据库的操作能力.可以说是数据属性模型(传统意义的表结构)，又或着是“集合”的模型骨架
+123456789/* 定义一个 Schema */var m">
+<meta property="og:updated_time" content="2015-09-01T05:41:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Petitspois">
+<meta name="twitter:description" content="MongooseMongoose 是什么?一般我们不直接用MongoDB的函数来操作MongoDB数据库 Mongose就是一套操作MongoDB数据库的接口.
+Schema一种以文件形式存储的数据库模型骨架，无法直接通往数据库端，也就是说它不具备对数据库的操作能力.可以说是数据属性模型(传统意义的表结构)，又或着是“集合”的模型骨架
+123456789/* 定义一个 Schema */var m">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'hide'
+  };
+</script>
+
+  <title>  | Petitspois </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?1275cad33c2bc4ebb08a1271d3309499";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">Petitspois</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-01T13:41:19+08:00" content="2015-09-01">
+            2015-09-01
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/09/01/mongoose/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/mongoose/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="Mongoose">Mongoose</h1><h2 id="Mongoose_是什么?">Mongoose 是什么?</h2><p>一般我们不直接用MongoDB的函数来操作MongoDB数据库 Mongose就是一套操作MongoDB数据库的接口.</p>
+<h2 id="Schema">Schema</h2><p>一种以文件形式存储的数据库模型骨架，无法直接通往数据库端，也就是说它不具备对数据库的操作能力.可以说是数据属性模型(传统意义的表结构)，又或着是“集合”的模型骨架</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 定义一个 Schema */</span></span><br><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">"mongoose"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> TestSchema = <span class="keyword">new</span> mongoose.Schema(&#123;</span><br><span class="line">    name : &#123; type:<span class="built_in">String</span> &#125;,<span class="comment">//属性name,类型为String</span></span><br><span class="line">    age  : &#123; type:<span class="built_in">Number</span>, <span class="keyword">default</span>:<span class="number">0</span> &#125;,<span class="comment">//属性age,类型为Number,默认为0</span></span><br><span class="line">    time : &#123; type:<span class="built_in">Date</span>, <span class="keyword">default</span>:<span class="built_in">Date</span>.now &#125;,</span><br><span class="line">    email: &#123; type:<span class="built_in">String</span>,<span class="keyword">default</span>:<span class="string">''</span>&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>上面这个 TestSchema包含4个属性 [name, age, time, email]</p>
+<h2 id="Model">Model</h2><p>由Schema构造生成的模型，除了Schema定义的数据库骨架以外，还具有数据库操作的行为，类似于管理数据库属性、行为的类<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> db = mongoose.connect(<span class="string">"mongodb://127.0.0.1:27017/test"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建Model</span></span><br><span class="line"><span class="keyword">var</span> TestModel = db.model(<span class="string">"test1"</span>, TestSchema);</span><br></pre></td></tr></table></figure></p>
+<p>test1 数据库中的集合名称, 不存在会创建.</p>
+<h2 id="Entity">Entity</h2><p>由Model创建的实体，使用save方法保存数据，Model和Entity都有能影响数据库的操作，但Model比Entity更具操作性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> TestEntity = <span class="keyword">new</span> TestModel(&#123;</span><br><span class="line">       name : <span class="string">"Lenka"</span>,</span><br><span class="line">       age  : <span class="number">36</span>,</span><br><span class="line">       email: <span class="string">"lenka@qq.com"</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(TestEntity.name); <span class="comment">// Lenka</span></span><br><span class="line"><span class="built_in">console</span>.log(TestEntity.age); <span class="comment">// 36</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="游标">游标</h2><p>MongoDB 使用游标返回find的执行结果.客户端对游标的实现通常能够对最终结果进行有效的控制。可以限制结果的数量，略过部分结果，根据任意键按任意顺序的组合对结果进行各种排序，或者是执行其他一些强的操作。</p>
+<h2 id="ObjectId">ObjectId</h2><p>存储在mongodb集合中的每个文档（document）都有一个默认的主键_id，这个主键名称是固定的，它可以是mongodb支持的任何数据类型，默认是ObjectId。</p>
+<p>ObjectId是一个12字节的 BSON 类型字符串。按照字节顺序，依次代表：<br>4字节：UNIX时间戳<br>3字节：表示运行MongoDB的机器<br>2字节：表示生成此_id的进程<br>3字节：由一个随机数开始的计数器生成的值</p>
+<h2 id="Node-js">Node.js</h2><p>package.json 中加入”mongoose”: “*” 字段<br>npm install 安装依赖.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">"mongoose"</span>);</span><br><span class="line"><span class="keyword">var</span> db = mongoose.connect(<span class="string">"mongodb://localhost:27017/test"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>然后引用</p>
+<h2 id="API">API</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">"mongoose"</span>);</span><br><span class="line"><span class="keyword">var</span> db = mongoose.connect(<span class="string">"mongodb://localhost:27017/test"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="db_-_数据库操作">db - 数据库操作</h2><p>1.挂接数据库连接事件,参数1: 也可以是error.</p>
+<blockquote>
+<p>db.connection.on(‘open’, callback);</p>
+</blockquote>
+<h2 id="Schema_-_表结构">Schema - 表结构</h2><p>1.构造函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> mongoose.Schema( &#123; name:&#123;type:<span class="built_in">String</span>&#125;, age:&#123;type:<span class="built_in">Number</span>, <span class="keyword">default</span>:<span class="number">10</span>&#125;  &#125; )</span><br></pre></td></tr></table></figure></p>
+<p>2.添加属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Schema.add( &#123; name: <span class="string">'String’, email: '</span><span class="built_in">String</span>’, age: ‘<span class="built_in">Number</span>’ &#125; )</span><br></pre></td></tr></table></figure></p>
+<p>3.有时候Schema不仅要为后面的Model和Entity提供公共的属性，还要提供公共的方法<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> Schema.method( 'say’, function()&#123;console.log(‘hello’);&#125; )</span><br><span class="line">//这样Model和Entity的实例就能使用这个方法了</span><br></pre></td></tr></table></figure></p>
+<p>4.添加静态方法<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> Schema.static( 'say’, function()&#123;console.log(‘hello’);&#125; )</span><br><span class="line">//静态方法，只限于在Model层就能使用</span><br></pre></td></tr></table></figure></p>
+<p>5.追加方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> Schema.methods.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(‘hello’);&#125;;</span><br><span class="line"><span class="comment">//静态方法，只限于在Model层就能使用</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="model_-_文档操作">model - 文档操作</h2><p>1.构造函数, 参数1:集合名称, 参数2:Schema实例<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.model(<span class="string">"test1"</span>, TestSchema );</span><br></pre></td></tr></table></figure></p>
+<p>2.查询, 参数1忽略,或为空对象则返回所有集合文档<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">model.find(&#123;&#125;, callback);</span><br><span class="line"></span><br><span class="line">model.find(&#123;&#125;,field,callback);</span><br><span class="line">过滤查询,参数2: &#123;’name’:1, 'age’:0&#125; 查询文档的返回结果包含name , 不包含age.(_id默认是1)</span><br><span class="line"></span><br><span class="line">model.find(&#123;&#125;,null,&#123;limit:20&#125;);</span><br><span class="line">过滤查询,参数3: 游标操作 limit限制返回结果数量为20个,如不足20个则返回所有.</span><br><span class="line"></span><br><span class="line">model.findOne(&#123;&#125;, callback);</span><br><span class="line">查询找到的第一个文档</span><br><span class="line"></span><br><span class="line">model.findById('obj._id’, callback);</span><br><span class="line">查询找到的第一个文档,同上. 但是只接受 __id 的值查询</span><br></pre></td></tr></table></figure></p>
+<p>3.创建, 在集合中创建一个文档<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Model.create(文档数据, callback))</span><br></pre></td></tr></table></figure></p>
+<p>4.更新,参数1:查询条件, 参数2:更新对象,可以使用MondoDB的更新修改器<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Model.update(conditions, update, <span class="function"><span class="keyword">function</span>(<span class="params">error</span>)</span></span><br></pre></td></tr></table></figure></p>
+<p>5.删除, 参数1:查询条件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Model.remove(conditions,callback);</span><br></pre></td></tr></table></figure></p>
+<h2 id="Entity_-_文档操作">Entity - 文档操作</h2><p>1.构造函数, 其实就是model的实例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> TestModel( &#123; name:’xueyou’, age:<span class="number">21</span> &#125; );</span><br></pre></td></tr></table></figure>
+<p>2.创建, 在集合中创建一个文档.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Entity.save(callback);</span><br></pre></td></tr></table></figure></p>
+<h2 id="修改器和更新器">修改器和更新器</h2><h3 id="更新修改器:">更新修改器:</h3><p>‘$inc’ 增减修改器,只对数字有效.下面的实例: 找到 age=22的文档,修改文档的age值自增1<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Model.update(&#123;’age’:<span class="number">22</span>&#125;, &#123;’$inc’:&#123;’age’:<span class="number">1</span>&#125; &#125;  );</span><br><span class="line">执行后: age=<span class="number">23</span></span><br></pre></td></tr></table></figure></p>
+<p>‘$set’ 指定一个键的值,这个键不存在就创建它.可以是任何MondoDB支持的类型.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Model.update(&#123;’age’:<span class="number">22</span>&#125;, &#123;’$set’:&#123;’age’:’haha’&#125; &#125;  );</span><br><span class="line">执行后: age=’haha’</span><br></pre></td></tr></table></figure></p>
+<p>‘$unset’ 同上取反,删除一个键<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> Model.update(&#123;’age’:<span class="number">22</span>&#125;, &#123;’$unset’:&#123;’age’:’haha’&#125; &#125;  );</span><br><span class="line">执行后: age键不存在</span><br></pre></td></tr></table></figure></p>
+<h3 id="数组修改器:">数组修改器:</h3><p>‘$push’ 给一个键push一个数组成员,键不存在会创建<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> Model.update(&#123;’age’:<span class="number">22</span>&#125;, &#123;’$push’:&#123;’array’:<span class="number">10</span>&#125; &#125;  );</span><br><span class="line">执行后: 增加一个 array 键,类型为数组, 有一个成员 <span class="number">10</span></span><br></pre></td></tr></table></figure></p>
+<p>‘$addToSet’ 向数组中添加一个元素,如果存在就不添加<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> Model.update(&#123;’age’:<span class="number">22</span>&#125;, &#123;’$addToSet’:&#123;’array’:<span class="number">10</span>&#125; &#125;  );</span><br><span class="line">执行后: array中有<span class="number">10</span>所以不会添加</span><br></pre></td></tr></table></figure></p>
+<p>‘$each’ 遍历数组, 和 $push 修改器配合可以插入多个值<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> Model.update(&#123;’age’:<span class="number">22</span>&#125;, &#123;’$push’:&#123;’array’:&#123;’$each’: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]&#125;&#125; &#125;  );</span><br><span class="line">执行后: array : [<span class="number">10</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure></p>
+<p>‘$pop’ 向数组中尾部删除一个元素<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> Model.update(&#123;’age’:<span class="number">22</span>&#125;, &#123;’$pop’:&#123;’array’:<span class="number">1</span>&#125; &#125;  );</span><br><span class="line">执行后: array : [<span class="number">10</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]  tips: 将<span class="number">1</span>改成-<span class="number">1</span>可以删除数组首部元素</span><br></pre></td></tr></table></figure></p>
+<p>‘$pull’ 向数组中删除指定元素<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> Model.update(&#123;’age’:<span class="number">22</span>&#125;, &#123;’$pull’:&#123;’array’:<span class="number">10</span>&#125; &#125;  );</span><br><span class="line">执行后: array : [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]  匹配到array中的<span class="number">10</span>后将其删除</span><br></pre></td></tr></table></figure></p>
+<h3 id="条件查询:">条件查询:</h3><ul>
+<li>“$lt” 小于</li>
+<li>“$lte” 小于等于</li>
+<li>“$gt” 大于</li>
+<li>“$gte” 大于等于</li>
+<li>“$ne” 不等于</li>
+</ul>
+<blockquote>
+<p>Model.find({“age”:{ “$get”:18 , “$lte”:30 } } );</p>
+</blockquote>
+<p>查询 age 大于等于18并小于等于30的文档</p>
+<h3 id="或查询_OR:">或查询 OR:</h3><ul>
+<li>‘$in’ 一个键对应多个值</li>
+<li>‘$nin’ 同上取反, 一个键不对应指定值</li>
+<li>“$or” 多个条件匹配, 可以嵌套 $in 使用</li>
+<li>“$not” 同上取反, 查询与特定模式不匹配的文档<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Model.find(&#123;<span class="string">"age"</span>:&#123; <span class="string">"$in"</span>:[<span class="number">20</span>,<span class="number">21</span>,<span class="number">22.</span>’haha’]&#125; &#125; );</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>查询 age等于20或21或21或’haha’的文档<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Model.find(&#123;<span class="string">"$or"</span> :  [ &#123;’age’:<span class="number">18</span>&#125; , &#123;’name’:’xueyou’&#125; ] &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>查询 age等于18 或 name等于’xueyou’ 的文档</p>
+<h3 id="类型查询:">类型查询:</h3><p>null 能匹配自身和不存在的值, 想要匹配键的值 为null, 就要通过  “$exists” 条件判定键值已经存在“$exists” (表示是否存在的意思)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Model.find(“age” :  &#123; “$<span class="keyword">in</span>” : [<span class="literal">null</span>] , “exists” : <span class="literal">true</span>  &#125; );</span><br><span class="line">查询 age值为<span class="literal">null</span>的文档</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Model.find(&#123;name: &#123;$exists: <span class="literal">true</span>&#125;&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">error,docs</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//查询所有存在name属性的文档</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Model.find(&#123;telephone: &#123;$exists: <span class="literal">false</span>&#125;&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">error,docs</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//查询所有不存在telephone属性的文档</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="正则表达式:">正则表达式:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Model.find(&#123;<span class="string">"array"</span>:<span class="number">10</span>&#125; );</span><br><span class="line">查询 array(数组类型)键中有<span class="number">10</span>的文档,  array : [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">10</span>]  会匹配到</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Model.find(&#123;<span class="string">"array[5]"</span>:<span class="number">10</span>&#125; );</span><br><span class="line">查询 array(数组类型)键中下标<span class="number">5</span>对应的值是<span class="number">10</span>,  array : [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">10</span>]  会匹配到</span><br></pre></td></tr></table></figure>
+<p>‘$all’ 匹配数组中多个元素<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Model.find(&#123;<span class="string">"array"</span>:[<span class="number">5</span>,<span class="number">10</span>]&#125; );</span><br><span class="line">查询 匹配array数组中 既有<span class="number">5</span>又有<span class="number">10</span>的文档</span><br></pre></td></tr></table></figure></p>
+<p>‘$size’ 匹配数组长度<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Model.find(&#123;<span class="string">"array"</span>:&#123;<span class="string">"$size"</span> : <span class="number">3</span>&#125; &#125; );</span><br><span class="line">查询 匹配array数组长度为<span class="number">3</span> 的文档</span><br></pre></td></tr></table></figure></p>
+<p>‘$slice’ 查询子集合返回<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Model.find(&#123;<span class="string">"array"</span>:&#123;<span class="string">"$skice"</span> : <span class="number">10</span>&#125; &#125; );</span><br><span class="line">查询 匹配array数组的前<span class="number">10</span>个元素</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> Model.find(&#123;<span class="string">"array"</span>:&#123;<span class="string">"$skice"</span> : [<span class="number">5</span>,<span class="number">10</span>] &#125; &#125; );</span><br><span class="line">查询 匹配array数组的第<span class="number">5</span>个到第<span class="number">10</span>个元素</span><br></pre></td></tr></table></figure>
+<h3 id="where">where</h3><p>用它可以执行任意javacript语句作为查询的一部分,如果回调函数返回 true 文档就作为结果的一部分返回<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">find( &#123;<span class="string">"$where"</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">var</span> x <span class="keyword">in</span> <span class="keyword">this</span> )&#123;</span><br><span class="line">         <span class="comment">//这个函数中的 this 就是文档</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.x !== <span class="literal">null</span> &amp;&amp; <span class="keyword">this</span>.y !== <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.x + <span class="keyword">this</span>.y === <span class="number">10</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>简化版本<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find( &#123;<span class="string">"$where"</span> :  <span class="string">"this.x + this.y === 10"</span> &#125; )</span><br><span class="line">find( &#123;<span class="string">"$where"</span> : <span class="string">" function()&#123; return this.x + this.y ===10; &#125; "</span> &#125; )</span><br></pre></td></tr></table></figure></p>
+<h3 id="游标:">游标:</h3><ul>
+<li>limit(3) 限制返回结果的数量,</li>
+<li>skip(3) 跳过前3个文档,返回其余的</li>
+<li>sort( {“username”:1 , “age”:-1 } ) 排序 键对应文档的键名, 值代表排序方向, 1 升序, -1降序</li>
+</ul>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mongoose/" rel="tag">#mongoose</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/01/markdown/" rel="next">Markdown 超简明语法</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/09/01/mongoose/"
+                   data-title="" data-url="http://yoursite.com/2015/09/01/mongoose/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="Petitspois" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Petitspois</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">前端开发,javascript,css3,html5,微信,博客</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/petitspois" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2882105185" target="_blank">weibo</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mongoose"><span class="nav-number">1.</span> <span class="nav-text">Mongoose</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mongoose_是什么?"><span class="nav-number">1.1.</span> <span class="nav-text">Mongoose 是什么?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Schema"><span class="nav-number">1.2.</span> <span class="nav-text">Schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model"><span class="nav-number">1.3.</span> <span class="nav-text">Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Entity"><span class="nav-number">1.4.</span> <span class="nav-text">Entity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#游标"><span class="nav-number">1.5.</span> <span class="nav-text">游标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ObjectId"><span class="nav-number">1.6.</span> <span class="nav-text">ObjectId</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js"><span class="nav-number">1.7.</span> <span class="nav-text">Node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API"><span class="nav-number">1.8.</span> <span class="nav-text">API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#db_-_数据库操作"><span class="nav-number">1.9.</span> <span class="nav-text">db - 数据库操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Schema_-_表结构"><span class="nav-number">1.10.</span> <span class="nav-text">Schema - 表结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#model_-_文档操作"><span class="nav-number">1.11.</span> <span class="nav-text">model - 文档操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Entity_-_文档操作"><span class="nav-number">1.12.</span> <span class="nav-text">Entity - 文档操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改器和更新器"><span class="nav-number">1.13.</span> <span class="nav-text">修改器和更新器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#更新修改器:"><span class="nav-number">1.13.1.</span> <span class="nav-text">更新修改器:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组修改器:"><span class="nav-number">1.13.2.</span> <span class="nav-text">数组修改器:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件查询:"><span class="nav-number">1.13.3.</span> <span class="nav-text">条件查询:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#或查询_OR:"><span class="nav-number">1.13.4.</span> <span class="nav-text">或查询 OR:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型查询:"><span class="nav-number">1.13.5.</span> <span class="nav-text">类型查询:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则表达式:"><span class="nav-number">1.13.6.</span> <span class="nav-text">正则表达式:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#where"><span class="nav-number">1.13.7.</span> <span class="nav-text">where</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#游标:"><span class="nav-number">1.13.8.</span> <span class="nav-text">游标:</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Petitspois</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"petitspois"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
