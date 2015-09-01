@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="tag1,tag2,tag3," />
+  <meta name="keywords" content="requirejs,seajs,模块开发," />
 
 
 
@@ -39,16 +39,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="自动补全如果你用的是 Bash shell，可以试试看 Git 提供的自动补全脚本。下载 Git 的源代码，进入 contrib/completion 目录，会看到一个 git-completion.bash 文件。将此文件复制到你自己的用户主目录中（译注：按照下面的示例，还应改名加上点：cp git-completion.bash ~/.git-completion.bash），并把下面一行内容">
+<meta name="description" content="如果你现在正在想要构建一种利于代码复用和后续维护开发的前端JS架构，那么也许你会选择模块化开发。然后在你的项目中引入requireJS或者seaJS这类模块加载器。这正是目前许多前端项目的布局。将公用的组件或功能模块分立成目标明确的小模块，按需加载。随着这种开发方式的流行，有好事者也在兴建各类规范，如commonJS或者AMD（requireJS）或者CMD（seaJS）等规范。然而今天我想推荐的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git命令自动补全">
-<meta property="og:url" content="http://yoursite.com/2015/09/01/gitauto/index.html">
+<meta property="og:title" content="简化版js模块开发">
+<meta property="og:url" content="http://yoursite.com/2015/09/01/simplerequire/index.html">
 <meta property="og:site_name" content="Petitspois">
-<meta property="og:description" content="自动补全如果你用的是 Bash shell，可以试试看 Git 提供的自动补全脚本。下载 Git 的源代码，进入 contrib/completion 目录，会看到一个 git-completion.bash 文件。将此文件复制到你自己的用户主目录中（译注：按照下面的示例，还应改名加上点：cp git-completion.bash ~/.git-completion.bash），并把下面一行内容">
-<meta property="og:updated_time" content="2015-09-01T03:47:54.000Z">
+<meta property="og:description" content="如果你现在正在想要构建一种利于代码复用和后续维护开发的前端JS架构，那么也许你会选择模块化开发。然后在你的项目中引入requireJS或者seaJS这类模块加载器。这正是目前许多前端项目的布局。将公用的组件或功能模块分立成目标明确的小模块，按需加载。随着这种开发方式的流行，有好事者也在兴建各类规范，如commonJS或者AMD（requireJS）或者CMD（seaJS）等规范。然而今天我想推荐的">
+<meta property="og:updated_time" content="2015-09-01T06:45:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git命令自动补全">
-<meta name="twitter:description" content="自动补全如果你用的是 Bash shell，可以试试看 Git 提供的自动补全脚本。下载 Git 的源代码，进入 contrib/completion 目录，会看到一个 git-completion.bash 文件。将此文件复制到你自己的用户主目录中（译注：按照下面的示例，还应改名加上点：cp git-completion.bash ~/.git-completion.bash），并把下面一行内容">
+<meta name="twitter:title" content="简化版js模块开发">
+<meta name="twitter:description" content="如果你现在正在想要构建一种利于代码复用和后续维护开发的前端JS架构，那么也许你会选择模块化开发。然后在你的项目中引入requireJS或者seaJS这类模块加载器。这正是目前许多前端项目的布局。将公用的组件或功能模块分立成目标明确的小模块，按需加载。随着这种开发方式的流行，有好事者也在兴建各类规范，如commonJS或者AMD（requireJS）或者CMD（seaJS）等规范。然而今天我想推荐的">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -58,7 +58,7 @@
   };
 </script>
 
-  <title> Git命令自动补全 | Petitspois </title>
+  <title> 简化版js模块开发 | Petitspois </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -175,7 +175,7 @@
           
           
             
-              Git命令自动补全
+              简化版js模块开发
             
           
         </h1>
@@ -184,7 +184,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-09-01T11:47:54+08:00" content="2015-09-01">
+          <time itemprop="dateCreated" datetime="2015-09-01T14:45:50+08:00" content="2015-09-01">
             2015-09-01
           </time>
         </span>
@@ -195,8 +195,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/09/01/gitauto/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/gitauto/" itemprop="commentsCount"></span>
+              <a href="/2015/09/01/simplerequire/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/simplerequire/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -210,10 +210,21 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="自动补全">自动补全</h1><p>如果你用的是 Bash shell，可以试试看 Git 提供的自动补全脚本。下载 Git 的源代码，进入 contrib/completion 目录，会看到一个 git-completion.bash 文件。将此文件复制到你自己的用户主目录中（译注：按照下面的示例，还应改名加上点：cp git-completion.bash ~/.git-completion.bash），并把下面一行内容添加到你的 .bashrc 文件中：<br>或者(find / -iname git-completion.bash)</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/<span class="class">.git-completion</span><span class="class">.bash</span></span><br></pre></td></tr></table></figure>
-<p>在输入 Git 命令的时候可以敲两次跳格键（Tab），就会看到列出所有匹配的可用命令建议：</p>
-<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">$</span> <span class="comment">git</span> <span class="comment">co</span>&lt;<span class="comment">tab</span>&gt;&lt;<span class="comment">tab</span>&gt;</span><br><span class="line"><span class="comment">commit</span> <span class="comment">config</span></span><br><span class="line"></span><br><span class="line"><span class="comment">$</span> <span class="comment">git</span> <span class="comment">log</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">s</span>&lt;<span class="comment">tab</span>&gt;</span><br><span class="line"><span class="literal">-</span><span class="literal">-</span><span class="comment">shortstat</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">since=</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">src</span><span class="literal">-</span><span class="comment">prefix=</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">stat</span>   <span class="literal">-</span><span class="literal">-</span><span class="comment">summary</span></span><br></pre></td></tr></table></figure></span>
+        <span itemprop="articleBody"><p>如果你现在正在想要构建一种利于代码复用和后续维护开发的前端JS架构，那么也许你会选择模块化开发。然后在你的项目中引入requireJS或者seaJS这类模块加载器。这正是目前许多前端项目的布局。将公用的组件或功能模块分立成目标明确的小模块，按需加载。随着这种开发方式的流行，有好事者也在兴建各类规范，如commonJS或者AMD（requireJS）或者CMD（seaJS）等规范。然而今天我想推荐的一种布局方式同样也遵循commonJS规范，但是不需要使用模块加载器，更简单灵活，同时也能支持后续开发的良好进行。</p>
+<p>其实我只是简化了requireJS这类模块加载器，而换成了十几行代码来替换。少了异步模块加载过程，少了模块依赖，而这正是这类加载器的复杂之处。然而却保留了最重要的模块开发良好的代码组织定义。少了这些还是模块开发吗？我们先来看看这十几行起到决定性作用的核心代码吧。</p>
+<a id="more"></a>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">global</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> mapping = &#123;&#125;, cached = &#123;&#125;;</span><br><span class="line">    global.define = <span class="function"><span class="keyword">function</span>(<span class="params">id, func</span>)</span>&#123;</span><br><span class="line">        mapping[id] = func;</span><br><span class="line">    &#125;;</span><br><span class="line">    global.require = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(cached[id])</span><br><span class="line">            <span class="keyword">return</span> cached[id];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> cached[id] = mapping[id](&#123;&#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)(<span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
+<p>以上就是所有核心代码，在你的项目中写入以上代码，那么模块化开发就完成了一大半。接下这说说如何基于以上代码来定义模块和使用模块。</p>
+<p>你可以像这样来定义一个功能模块：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="string">'src/utils.js'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">exports</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> verson = <span class="string">'1.00'</span>;</span><br><span class="line">    exports.getVersion = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> verson;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> exports;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>你如果使用过模块加载器就应该知道exports是用来向外暴露接口的，这里作用相同。</p>
+<p>在一个模块中引入另一个模块：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="string">'src/main.js'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">exports</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> utils = <span class="built_in">require</span>(<span class="string">'src/utils.js'</span>);</span><br><span class="line">    <span class="keyword">var</span> version = utils.getVersion();<span class="comment">//'1.00'</span></span><br><span class="line">    <span class="keyword">return</span> exports;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>以上就已经基本搭建好了模块化开发环境，你就可以按照模块化开发的方式去开发了，将每一个模块保持为单独的js,如以上utils.js,main.js等。说到这里问题就来了，既然少了requireJS等模块加载器的加载行为，那我们怎么引入模块呀。这里我采用的方法也是将其简化。我利用ant结合脚本来对模块进行压缩合并。这样就可以满足当你改动某个模块JS代码，后台就自动将最新的代码合并。所以在你的页面中只会引入一个或少量的包含大部分公用模块的js文件。如我的项目中有个common.js，那么每当我修改utils.js则common.js也会进行最新的修改合并。所以在你的页面中只需要引入common.js就可以了。所以这里就少了模块异步加载的过程，一切都简化了。</p>
+<p>这是有人可能会提出三个问题：<br>1.不需要的模块也加载进来了。<br>2.用户访问时不得不经常获取最新模块合并成的JS文件（如common.js），因为它经常改变。<br>3.模块过多会导致合并文件过大。</p>
+<p>第一个问题，不需要的模块只是进行了定义，不会执行。对性能的影响可以忽略不计。第二个问题因为模块有时经常改变，就会导致整个模块合并成的JS文件更新，导致浏览器缓存不能使用。如果你的网站不是每天一次更新上线，那么这个问题就这样吧。第三个问题就是一般经过压缩后容量不会是太大问题，除非你做的是大型网站，还有就是正对不同功能的模块进行合并划分。比如UI组件模块可以进行单独合并，功能模块可以单独合并。</p>
+<p>以上就是我推崇的针对中小型网站的开发模式。</p>
+</span>
       
     </div>
 
@@ -221,11 +232,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/tag1/" rel="tag">#tag1</a>
+            <a href="/tags/requirejs/" rel="tag">#requirejs</a>
           
-            <a href="/tags/tag2/" rel="tag">#tag2</a>
+            <a href="/tags/seajs/" rel="tag">#seajs</a>
           
-            <a href="/tags/tag3/" rel="tag">#tag3</a>
+            <a href="/tags/模块开发/" rel="tag">#模块开发</a>
           
         </div>
       
@@ -234,13 +245,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/09/01/inputopt/" rel="prev">input 事件兼容处理以及中文输入法优化</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/01/daimaguifan/" rel="next">前端代码规范,类似google</a>
+              <a href="/2015/09/01/simplemodule/" rel="next">js超简单模板引擎概念</a>
             
           </div>
         </div>
@@ -265,8 +274,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/09/01/gitauto/"
-                   data-title="Git命令自动补全" data-url="http://yoursite.com/2015/09/01/gitauto/">
+              <div class="ds-thread" data-thread-key="2015/09/01/simplerequire/"
+                   data-title="简化版js模块开发" data-url="http://yoursite.com/2015/09/01/simplerequire/">
               </div>
             
           </div>
@@ -365,7 +374,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#自动补全"><span class="nav-number">1.</span> <span class="nav-text">自动补全</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
