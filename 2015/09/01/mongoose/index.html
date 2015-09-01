@@ -43,15 +43,15 @@
 Schema一种以文件形式存储的数据库模型骨架，无法直接通往数据库端，也就是说它不具备对数据库的操作能力.可以说是数据属性模型(传统意义的表结构)，又或着是“集合”的模型骨架
 123456789/* 定义一个 Schema */var m">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Petitspois">
+<meta property="og:title" content="Mongoose 简单介绍与常用方法?">
 <meta property="og:url" content="http://yoursite.com/2015/09/01/mongoose/index.html">
 <meta property="og:site_name" content="Petitspois">
 <meta property="og:description" content="MongooseMongoose 是什么?一般我们不直接用MongoDB的函数来操作MongoDB数据库 Mongose就是一套操作MongoDB数据库的接口.
 Schema一种以文件形式存储的数据库模型骨架，无法直接通往数据库端，也就是说它不具备对数据库的操作能力.可以说是数据属性模型(传统意义的表结构)，又或着是“集合”的模型骨架
 123456789/* 定义一个 Schema */var m">
-<meta property="og:updated_time" content="2015-09-01T05:41:19.000Z">
+<meta property="og:updated_time" content="2015-09-01T05:42:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Petitspois">
+<meta name="twitter:title" content="Mongoose 简单介绍与常用方法?">
 <meta name="twitter:description" content="MongooseMongoose 是什么?一般我们不直接用MongoDB的函数来操作MongoDB数据库 Mongose就是一套操作MongoDB数据库的接口.
 Schema一种以文件形式存储的数据库模型骨架，无法直接通往数据库端，也就是说它不具备对数据库的操作能力.可以说是数据属性模型(传统意义的表结构)，又或着是“集合”的模型骨架
 123456789/* 定义一个 Schema */var m">
@@ -64,7 +64,7 @@ Schema一种以文件形式存储的数据库模型骨架，无法直接通往�
   };
 </script>
 
-  <title>  | Petitspois </title>
+  <title> Mongoose 简单介绍与常用方法? | Petitspois </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -181,7 +181,7 @@ Schema一种以文件形式存储的数据库模型骨架，无法直接通往�
           
           
             
-              
+              Mongoose 简单介绍与常用方法?
             
           
         </h1>
@@ -190,7 +190,7 @@ Schema一种以文件形式存储的数据库模型骨架，无法直接通往�
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-09-01T13:41:19+08:00" content="2015-09-01">
+          <time itemprop="dateCreated" datetime="2015-09-01T13:42:41+08:00" content="2015-09-01">
             2015-09-01
           </time>
         </span>
@@ -220,6 +220,7 @@ Schema一种以文件形式存储的数据库模型骨架，无法直接通往�
 <h2 id="Schema">Schema</h2><p>一种以文件形式存储的数据库模型骨架，无法直接通往数据库端，也就是说它不具备对数据库的操作能力.可以说是数据属性模型(传统意义的表结构)，又或着是“集合”的模型骨架</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 定义一个 Schema */</span></span><br><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">"mongoose"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> TestSchema = <span class="keyword">new</span> mongoose.Schema(&#123;</span><br><span class="line">    name : &#123; type:<span class="built_in">String</span> &#125;,<span class="comment">//属性name,类型为String</span></span><br><span class="line">    age  : &#123; type:<span class="built_in">Number</span>, <span class="keyword">default</span>:<span class="number">0</span> &#125;,<span class="comment">//属性age,类型为Number,默认为0</span></span><br><span class="line">    time : &#123; type:<span class="built_in">Date</span>, <span class="keyword">default</span>:<span class="built_in">Date</span>.now &#125;,</span><br><span class="line">    email: &#123; type:<span class="built_in">String</span>,<span class="keyword">default</span>:<span class="string">''</span>&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>上面这个 TestSchema包含4个属性 [name, age, time, email]</p>
+<a id="more"></a>
 <h2 id="Model">Model</h2><p>由Schema构造生成的模型，除了Schema定义的数据库骨架以外，还具有数据库操作的行为，类似于管理数据库属性、行为的类<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> db = mongoose.connect(<span class="string">"mongodb://127.0.0.1:27017/test"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建Model</span></span><br><span class="line"><span class="keyword">var</span> TestModel = db.model(<span class="string">"test1"</span>, TestSchema);</span><br></pre></td></tr></table></figure></p>
 <p>test1 数据库中的集合名称, 不存在会创建.</p>
 <h2 id="Entity">Entity</h2><p>由Model创建的实体，使用save方法保存数据，Model和Entity都有能影响数据库的操作，但Model比Entity更具操作性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> TestEntity = <span class="keyword">new</span> TestModel(&#123;</span><br><span class="line">       name : <span class="string">"Lenka"</span>,</span><br><span class="line">       age  : <span class="number">36</span>,</span><br><span class="line">       email: <span class="string">"lenka@qq.com"</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(TestEntity.name); <span class="comment">// Lenka</span></span><br><span class="line"><span class="built_in">console</span>.log(TestEntity.age); <span class="comment">// 36</span></span><br></pre></td></tr></table></figure></p>
@@ -307,11 +308,13 @@ Schema一种以文件形式存储的数据库模型骨架，无法直接通往�
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2015/09/01/markdown/" rel="prev">Markdown 超简明语法</a>
+            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/01/markdown/" rel="next">Markdown 超简明语法</a>
+              <a href="/2015/09/01/gulp/" rel="next">Gulp，新一代流行的任务自动管理工具</a>
             
           </div>
         </div>
@@ -337,7 +340,7 @@ Schema一种以文件形式存储的数据库模型骨架，无法直接通往�
           <div class="comments" id="comments">
             
               <div class="ds-thread" data-thread-key="2015/09/01/mongoose/"
-                   data-title="" data-url="http://yoursite.com/2015/09/01/mongoose/">
+                   data-title="Mongoose 简单介绍与常用方法?" data-url="http://yoursite.com/2015/09/01/mongoose/">
               </div>
             
           </div>
