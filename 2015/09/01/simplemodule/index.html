@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="jquery,on,事件,多事件," />
+  <meta name="keywords" content="js,模板," />
 
 
 
@@ -39,22 +39,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="jQuery在1.7版本后，建议大家用on方法代替之前的bind、live、delegate方法。那上面一句如果用on的话，怎么写呢？
-其实查看live源码就知道，live实际是委托doucment进行事件委派的。按照这个思路，可以将on方法绑定到document即可。
-123$(document).on(&apos;click&apos;, &apos;#header .fixed-feedback-bn, #sb-sec">
+<meta name="description" content="现在前端的童鞋经常会做这样一件事，把后台返回回来的json数据包装成展示给用户的视图。我做这件事其实是经历了3个阶段。第一个阶段就是字符串的拼接，把字符串和一些数据拼接起来变成我们想要的视图。第二个阶段就是使用模板引擎，从这儿开始有了模板的概念，模板开始进行了单独的分离。第三种方法就是我现在要介绍的。然而实际上这并不是技术递增的3个阶段。技术原理不变，只是一些思维上的转变却带来很大好处。就比如前端">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jQuery on()方法绑定多个选择器,多个事件">
-<meta property="og:url" content="http://yoursite.com/2015/09/01/jqueryon/index.html">
+<meta property="og:title" content="js超简单模板引擎概念">
+<meta property="og:url" content="http://yoursite.com/2015/09/01/simplemodule/index.html">
 <meta property="og:site_name" content="Petitspois">
-<meta property="og:description" content="jQuery在1.7版本后，建议大家用on方法代替之前的bind、live、delegate方法。那上面一句如果用on的话，怎么写呢？
-其实查看live源码就知道，live实际是委托doucment进行事件委派的。按照这个思路，可以将on方法绑定到document即可。
-123$(document).on(&apos;click&apos;, &apos;#header .fixed-feedback-bn, #sb-sec">
-<meta property="og:updated_time" content="2015-09-01T05:31:16.000Z">
+<meta property="og:description" content="现在前端的童鞋经常会做这样一件事，把后台返回回来的json数据包装成展示给用户的视图。我做这件事其实是经历了3个阶段。第一个阶段就是字符串的拼接，把字符串和一些数据拼接起来变成我们想要的视图。第二个阶段就是使用模板引擎，从这儿开始有了模板的概念，模板开始进行了单独的分离。第三种方法就是我现在要介绍的。然而实际上这并不是技术递增的3个阶段。技术原理不变，只是一些思维上的转变却带来很大好处。就比如前端">
+<meta property="og:updated_time" content="2015-09-01T06:33:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jQuery on()方法绑定多个选择器,多个事件">
-<meta name="twitter:description" content="jQuery在1.7版本后，建议大家用on方法代替之前的bind、live、delegate方法。那上面一句如果用on的话，怎么写呢？
-其实查看live源码就知道，live实际是委托doucment进行事件委派的。按照这个思路，可以将on方法绑定到document即可。
-123$(document).on(&apos;click&apos;, &apos;#header .fixed-feedback-bn, #sb-sec">
+<meta name="twitter:title" content="js超简单模板引擎概念">
+<meta name="twitter:description" content="现在前端的童鞋经常会做这样一件事，把后台返回回来的json数据包装成展示给用户的视图。我做这件事其实是经历了3个阶段。第一个阶段就是字符串的拼接，把字符串和一些数据拼接起来变成我们想要的视图。第二个阶段就是使用模板引擎，从这儿开始有了模板的概念，模板开始进行了单独的分离。第三种方法就是我现在要介绍的。然而实际上这并不是技术递增的3个阶段。技术原理不变，只是一些思维上的转变却带来很大好处。就比如前端">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -64,7 +58,7 @@
   };
 </script>
 
-  <title> jQuery on()方法绑定多个选择器,多个事件 | Petitspois </title>
+  <title> js超简单模板引擎概念 | Petitspois </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -181,7 +175,7 @@
           
           
             
-              jQuery on()方法绑定多个选择器,多个事件
+              js超简单模板引擎概念
             
           
         </h1>
@@ -190,7 +184,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-09-01T13:31:16+08:00" content="2015-09-01">
+          <time itemprop="dateCreated" datetime="2015-09-01T14:33:58+08:00" content="2015-09-01">
             2015-09-01
           </time>
         </span>
@@ -201,8 +195,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/09/01/jqueryon/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/jqueryon/" itemprop="commentsCount"></span>
+              <a href="/2015/09/01/simplemodule/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/simplemodule/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -216,13 +210,32 @@
       
 
       
-        <span itemprop="articleBody"><p>jQuery在1.7版本后，建议大家用on方法代替之前的bind、live、delegate方法。<br>那上面一句如果用on的话，怎么写呢？</p>
-<p>其实查看live源码就知道，live实际是委托doucment进行事件委派的。<br>按照这个思路，可以将on方法绑定到document即可。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).on(<span class="string">'click'</span>, <span class="string">'#header .fixed-feedback-bn, #sb-sec .feedback-bn'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">				<span class="comment">// code...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>还有一种情况，on()方法绑定多个事件，可以这样写：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"table.planning_grid"</span>).on(&#123;</span><br><span class="line">    mouseenter: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// Handle mouseenter...</span></span><br><span class="line">    &#125;,</span><br><span class="line">    mouseleave: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// Handle mouseleave...</span></span><br><span class="line">    &#125;,</span><br><span class="line">    click: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// Handle click...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="string">"td"</span>);</span><br></pre></td></tr></table></figure>
-<p>最后，用on()方法绑定多个选择器，多个事件则可以这样写：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).on(&#123;</span><br><span class="line">	mouseenter: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="comment">// Handle mouseenter...</span></span><br><span class="line">	&#125;,</span><br><span class="line">	mouseleave: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="comment">// Handle mouseleave...</span></span><br><span class="line">	&#125;,</span><br><span class="line">	click: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="comment">// Handle click...</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;, <span class="string">'#header .fixed-feedback-bn, #sb-sec .feedback-bn'</span>);</span><br></pre></td></tr></table></figure>
+        <span itemprop="articleBody"><p>现在前端的童鞋经常会做这样一件事，把后台返回回来的json数据包装成展示给用户的视图。我做这件事其实是经历了3个阶段。第一个阶段就是字符串的拼接，把字符串和一些数据拼接起来变成我们想要的视图。第二个阶段就是使用模板引擎，从这儿开始有了模板的概念，模板开始进行了单独的分离。第三种方法就是我现在要介绍的。然而实际上这并不是技术递增的3个阶段。技术原理不变，只是一些思维上的转变却带来很大好处。就比如前端模板引擎，能让你处理好模板、数据和视图的关系，而不用像第一种方式那样杂糅在一起。至于第三种方法并不高明，确是我最近常采用的方法。或者说我本文要讲的可能是正则表达式。大家也不要有1、2、3这样的递进思维，不然可能很受伤。</p>
+<p>这第三种方式其实就是使用正则表达式来对模板里要填充的数据进行匹配替换。就这么简单而已。</p>
+<a id="more"></a>
+<p>首先先写一个简单的模板：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script id=<span class="string">"template"</span> type=<span class="string">"text/template"</span>&gt;</span><br><span class="line">	<span class="xml"><span class="tag">&lt;<span class="title">p</span>&gt;</span></span><br><span class="line">		my name is &#123;#name&#125;, I'm a &#123;#gender&#125;. my hobby is &#123;#like&#125;, and my qq is &#123;#qq&#125;.</span><br><span class="line">	<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>然后借助如下的render方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> render = <span class="function"><span class="keyword">function</span>(<span class="params">str, data</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> reg = <span class="regexp">/\&#123;#([^\&#125;]+)\&#125;/g</span>;</span><br><span class="line">	<span class="keyword">return</span> str.replace(reg, <span class="function"><span class="keyword">function</span>(<span class="params">str, $1</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">typeof</span> data[$<span class="number">1</span>] !== <span class="string">"undefined"</span> ? data[$<span class="number">1</span>] : <span class="string">" undefined "</span>;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后把数据混入模板中变成我们要的视图：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">	name: <span class="string">"lichen"</span>,</span><br><span class="line">	gender: <span class="string">"boy"</span>,</span><br><span class="line">	like: <span class="string">"basketball"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> html= render(<span class="built_in">document</span>.getElementById(<span class="string">'template'</span>).innerHTML, data);</span><br></pre></td></tr></table></figure>
+<p>执行render方法后会返回如下内容：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">p</span>&gt;</span></span><br><span class="line">	my name is lichen, I'm a boy. my hobby is basketball, and my qq is undefined.</span><br><span class="line"><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其实到这儿主要内容已经讲完。一点也不高深，你掌握了可能也没办法逆袭。然而想说的却还没有说尽。</p>
+<p>你会发现这个简单到让人想死的render方法和前端模板引擎相比似乎少了些什么。前端模板引擎大都支持条件、遍历等逻辑。似乎这个没有支持哟。的确不支持。支持了也就变成了常规的前端模板引擎了，将模板根据特定规则转化成原生js代码片段字符串，然后利用new Function()来执行。这大概就是一般前端模板引擎的原理了。那这个不支持需要怎么处理呢？</p>
+<p>如果涉及到条件和遍历等逻辑的话，我们就需要在数据上做处理了，比如后台返回一个isAdmin的参数值为0或1，我们根据这个来决定是否添加admin的class样式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.isAdmin = data.isAdmin ? <span class="string">'admin'</span> : <span class="string">''</span>;</span><br></pre></td></tr></table></figure>
+<p>这样基本就能解决这些逻辑问题。然而却并不是一种很好的方式，但是使用这个的好处也很明显，对模板进行了解放，你会发现模板从此以后变得简洁直观，不再掺杂一些逻辑代码了。所以对于一些没有包含复杂逻辑的模板视图，我肯定会采用上述方式。</p>
+<h3 id="模板保存在哪里比较好？">模板保存在哪里比较好？</h3><p>其实这是让我挺纠结的一个问题。也许纠结这个小问题让别人看笑话了。不过我觉得我们前端童鞋应该有两个努力方向：做大和做细。仰观宇宙之大 俯察品类之盛。有时你会发现你与别人的差异往往在一些细微之处。所以这个问题还是值得考虑的。现在有如下保存方式：</p>
+<ol>
+<li><p>保存在javascript中<br>这应该是最常用的方式，把模板当做js字符串变量来保存。在我们要使用的时候获取。这样也很方便。然而如果我们把MVC模式上升一个台阶，不要局限在某种编程语言的具体实现来看的话，对于一个web项目来说，M表示的是后端对数据的存取，V则指html、css经过浏览器渲染的视图，而javascript则扮演者Controller的角色。这个认识虽不一定严谨正确，却足以说明问题。模板应是属于视图部分，所以理论上来说应该尽量分离。</p>
+</li>
+<li><p>保存在html中<br>使用 <code>&lt;script type=”text/template”&gt;</code>等方式保存在页面html中，通过对该script节点获取内容。这种方式有效避免了视图和js的混杂。然而他的问题就是我们必须在需要的页面中都引进改模板，而不能像保存在js中，能够只通过引入一个js来共享。</p>
+</li>
+<li><p>单独文件，异步请求获取<br>这种方式使用得较少，异步请求毕竟需要时间，所以大家都不太常采用。</p>
+</li>
+</ol>
+<p>我纠结的问题就是无法整理出一种共识的方法，往往选取了一种方法，另外一种方法的便利就丢了。所以最好还是灵活的混合使用。对于类似UI component全站公用的视图模板，保存在js中，而对于只是单个具体页面层的模板则采用第二种方法。这样也许算是个折中的好办法。</p>
 </span>
       
     </div>
@@ -231,13 +244,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/jquery/" rel="tag">#jquery</a>
+            <a href="/tags/js/" rel="tag">#js</a>
           
-            <a href="/tags/on/" rel="tag">#on</a>
-          
-            <a href="/tags/事件/" rel="tag">#事件</a>
-          
-            <a href="/tags/多事件/" rel="tag">#多事件</a>
+            <a href="/tags/模板/" rel="tag">#模板</a>
           
         </div>
       
@@ -246,13 +255,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/09/01/gulp/" rel="prev">Gulp，新一代流行的任务自动管理工具</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/01/inputopt/" rel="next">input 事件兼容处理以及中文输入法优化</a>
+              <a href="/2015/09/01/nodepm2/" rel="next">nodejs 运行管理应用PM2介绍</a>
             
           </div>
         </div>
@@ -277,8 +284,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/09/01/jqueryon/"
-                   data-title="jQuery on()方法绑定多个选择器,多个事件" data-url="http://yoursite.com/2015/09/01/jqueryon/">
+              <div class="ds-thread" data-thread-key="2015/09/01/simplemodule/"
+                   data-title="js超简单模板引擎概念" data-url="http://yoursite.com/2015/09/01/simplemodule/">
               </div>
             
           </div>
@@ -377,7 +384,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#模板保存在哪里比较好？"><span class="nav-number">1.</span> <span class="nav-text">模板保存在哪里比较好？</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
