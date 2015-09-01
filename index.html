@@ -197,6 +197,82 @@
           
           
             
+              <a class="post-title-link" href="/2015/09/01/javascriptsecret/" itemprop="url">
+                Javascript 秘密花园
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-01T16:49:05+08:00" content="2015-09-01">
+            2015-09-01
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/09/01/javascriptsecret/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/javascriptsecret/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h1 id="对象">对象</h1><h2 id="对象使用和属性">对象使用和属性</h2><p>JavaScript 中所有变量都是对象，除了两个例外 <code>null</code> 和 <code>undefined</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">false</span>.toString(); <span class="comment">// 'false'</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].toString(); <span class="comment">// '1,2,3'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">Foo.bar = <span class="number">1</span>;</span><br><span class="line">Foo.bar; <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>一个常见的误解是数字的字面值（literal）不是对象。这是因为 JavaScript 解析器的一个错误， 它试图将点操作符解析为浮点数字面值的一部分。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2.</span>toString(); <span class="comment">// 出错：SyntaxError</span></span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/09/01/javascriptsecret/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/09/01/jqueryon/" itemprop="url">
                 jQuery on()方法绑定多个选择器,多个事件
               </a>
@@ -480,91 +556,11 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/01/nodepm2/" itemprop="url">
-                nodejs 运行管理应用PM2介绍
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-09-01T14:02:00+08:00" content="2015-09-01">
-            2015-09-01
-          </time>
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/09/01/nodepm2/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/nodepm2/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>devo.ps团队对JavaScript的迷恋已经不是什么秘密了;node.js作为服务器端,AngularJS作为客户端,某种程度上说,我们的堆栈是用它建成的.我们构建静态客户端和RESTful JSON API的方法意味着我们跑了很多的node.js,我必须承认尽管node.js的一切都令人敬畏,但当我们在生产环境中运行它时它仍然会让我们感到头疼.相比一些更加成熟的语言,它的工具和最佳实践仍然缺乏(试想一下:监控,日志,错误处理).</p>
-<p>到目前为止,我们仍然依赖漂亮俏皮的node-forever模块.它是非常伟大的模块,不过依然缺失一些功能:</p>
-<ul>
-<li>有限的监控和日志功能</li>
-<li>进程管理配置的支持差</li>
-<li>不支持集群</li>
-<li>代码库老化(意味着在升级node.js时频繁的失败)</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/01/nodepm2/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
   </nav>
 
  </div>
@@ -598,7 +594,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -612,7 +608,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

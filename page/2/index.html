@@ -197,6 +197,86 @@
           
           
             
+              <a class="post-title-link" href="/2015/09/01/nodepm2/" itemprop="url">
+                nodejs 运行管理应用PM2介绍
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-01T14:02:00+08:00" content="2015-09-01">
+            2015-09-01
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/09/01/nodepm2/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/nodepm2/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>devo.ps团队对JavaScript的迷恋已经不是什么秘密了;node.js作为服务器端,AngularJS作为客户端,某种程度上说,我们的堆栈是用它建成的.我们构建静态客户端和RESTful JSON API的方法意味着我们跑了很多的node.js,我必须承认尽管node.js的一切都令人敬畏,但当我们在生产环境中运行它时它仍然会让我们感到头疼.相比一些更加成熟的语言,它的工具和最佳实践仍然缺乏(试想一下:监控,日志,错误处理).</p>
+<p>到目前为止,我们仍然依赖漂亮俏皮的node-forever模块.它是非常伟大的模块,不过依然缺失一些功能:</p>
+<ul>
+<li>有限的监控和日志功能</li>
+<li>进程管理配置的支持差</li>
+<li>不支持集群</li>
+<li>代码库老化(意味着在升级node.js时频繁的失败)</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/09/01/nodepm2/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/09/01/markdown/" itemprop="url">
                 Markdown 超简明语法
               </a>
@@ -496,115 +576,11 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/01/daimaguifan/" itemprop="url">
-                前端代码规范,类似google
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-09-01T11:38:28+08:00" content="2015-09-01">
-            2015-09-01
-          </time>
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/09/01/daimaguifan/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/daimaguifan/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>jade类以及内嵌js</p>
-</blockquote>
-<ul>
-<li>缩进为2，除了js声明 如：</li>
-</ul>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line"><span class="class">.form-group</span></span><br><span class="line">  <span class="tag">label</span><span class="class">.col-sm-2</span><span class="class">.control-label</span> 主机</span><br><span class="line">    <span class="class">.col-sm-6</span></span><br><span class="line">      <span class="tag">input</span>.<span class="function"><span class="title">form-control</span><span class="params">(type=<span class="string">"text"</span>, name=<span class="string">"host"</span>)</span></span></span><br></pre></td></tr></table></figure>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//js</span></span><br><span class="line"><span class="keyword">var</span> routeArr = [],</span><br><span class="line">    buttonType = $route.find(<span class="string">'button'</span>)[<span class="number">0</span>].dataset.type,</span><br><span class="line">    selectCollection = <span class="string">'custom'</span>;</span><br><span class="line">$.<span class="keyword">each</span>(selectCollection, <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">var</span> selectVal = <span class="keyword">this</span>.value;</span><br><span class="line">  <span class="keyword">if</span>(!<span class="keyword">this</span>.value)selectVal = <span class="string">'*'</span>;</span><br><span class="line">  routeArr.push(selectVal)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>通用前端规范</p>
-</blockquote>
-<h3 id="html规范">html规范</h3><ul>
-<li>排版缩进为4</li>
-<li>标签属性使用小写</li>
-<li>在HTML5规范里并没有严格要求属性值两边加引号。但考虑到一些属性可以接受空白值，为了保持一致性，我们要求所有属性值必须加上引号。</li>
-<li>段落分隔符要使用实际对应的 <code>&lt;p&gt;</code> 素，而不是用多个<code>&lt;br&gt;</code>标签。</li>
-<li>在合适的条件下，充分利用<code>&lt;dl&gt;</code> （定义列表）和<code>&lt;blockquote&gt;</code> 标签。</li>
-<li>列表中的条目必须总是放置于<code>&lt;ul&gt;</code>、<code>&lt;ol&gt;</code>或<code>&lt;dl&gt;</code> 中，永远不要用一组 <code>&lt;div&gt;</code>或<code>&lt;p&gt;</code> 来表示。</li>
-<li>给每个表单里的字段加上 <code>&lt;label&gt;</code> 标签，其中的 for 属性必须和对应的输入字段对应，这样用户就可以点击标签。同理，给标签加上 cursor:pointer; 样式也是明智的做法。</li>
-<li>多媒体标签向后兼容，记得加上alt属性</li>
-</ul>
-<h3 id="CSS规范–(like_google)">CSS规范–(like google)</h3><ul>
-<li>正确使用缩写，例如navigation就可以缩写为nav，而author就不要缩写</li>
-<li>id与class前不必加上标签类型</li>
-<li>属性尽量使用简写形式，如font或background等</li>
-<li>0后面不要加上单位</li>
-<li>小数前不要加上0</li>
-<li>url()中不要加入引号，例如@import url(//www.google.com/css/go.css);</li>
-<li>16进制尽量使用3位表示</li>
-<li>可以为项目加入前缀，例如.adw-help {} /<em> AdWords </em>/</li>
-<li>分词使用“-”，如前例</li>
-<li><p>属性采用字典序申明，包括前缀如moz安排在webkit之前</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/01/daimaguifan/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/">&laquo;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">&raquo;</a>
   </nav>
 
  </div>
@@ -638,7 +614,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -652,7 +628,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
