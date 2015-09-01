@@ -187,7 +187,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-09-01T13:53:59+08:00" content="2015-09-01">
+          <time itemprop="dateCreated" datetime="2015-09-01T14:02:00+08:00" content="2015-09-01">
             2015-09-01
           </time>
         </span>
@@ -214,7 +214,7 @@
 
       
         
-          <span itemprop="articleBody"><p>devo.ps团队对JavaScript的迷恋已经不是什么秘密了;node.js作为服务器端,AngularJS作为客户端,某种程度上说,我们的堆栈是用它建成的.我们构建静态客户端和RESTful JSON API的方法意味着我们跑了很多的node.js,我必须承认尽管node.js的一切都令人敬畏,但当我们在生产环境中运行它时它仍然会让我们感到头疼.相比一些更加成熟的语言,它的工具和最佳实践仍然缺乏(试想一下:监控,日志,错误处理).</p>
+          <p>devo.ps团队对JavaScript的迷恋已经不是什么秘密了;node.js作为服务器端,AngularJS作为客户端,某种程度上说,我们的堆栈是用它建成的.我们构建静态客户端和RESTful JSON API的方法意味着我们跑了很多的node.js,我必须承认尽管node.js的一切都令人敬畏,但当我们在生产环境中运行它时它仍然会让我们感到头疼.相比一些更加成熟的语言,它的工具和最佳实践仍然缺乏(试想一下:监控,日志,错误处理).</p>
 <p>到目前为止,我们仍然依赖漂亮俏皮的node-forever模块.它是非常伟大的模块,不过依然缺失一些功能:</p>
 <ul>
 <li>有限的监控和日志功能</li>
@@ -222,106 +222,11 @@
 <li>不支持集群</li>
 <li>代码库老化(意味着在升级node.js时频繁的失败)</li>
 </ul>
-<h3 id="PM2到底是什么个东西呢?">PM2到底是什么个东西呢?</h3><p>首先你需要先通过npm来安装它:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="operator"><span class="keyword">install</span> pm2 -<span class="keyword">g</span></span></span><br></pre></td></tr></table></figure></p>
-<p>让我们通过表格来对比下:</p>
-<table>
-<thead>
-<tr>
-<th>Feature</th>
-<th style="text-align:left">Forever</th>
-<th style="text-align:left">PM2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Keep Alive</td>
-<td style="text-align:left">✔</td>
-<td style="text-align:left">✔</td>
-</tr>
-<tr>
-<td>Coffeescript</td>
-<td style="text-align:left">✔</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td>Log aggregation</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">✔</td>
-</tr>
-<tr>
-<td>API</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">✔</td>
-</tr>
-<tr>
-<td>Terminal monitoring</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">✔</td>
-</tr>
-<tr>
-<td>Clustering</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">✔</td>
-</tr>
-<tr>
-<td>JSON configuration</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">✔</td>
-</tr>
-</tbody>
-</table>
-<p>现在让我来介绍一点点主要特性…</p>
-<h3 id="原生的集群化支持">原生的集群化支持</h3><p>Node v0.6引入了集群特性,允许你在多个Node应用中共享socket.问题在于,它不能在容器外运行而且需要一些额外的配置来处理主进程和子进程.</p>
-<p>PM2原生支持处理这个问题,而且不需要额外的代码:PM2本身作为主进程,然后它将你的代码封装到一个特殊的集群进程里,就像node.js一样,为你的代码文件添加一些全局变量.</p>
-<p>想要启动一个使用所有CPU核心的集群,你只需要键入如下的指令:</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 start app<span class="class">.js</span> -<span class="tag">i</span> max</span><br></pre></td></tr></table></figure>
-<p>然后:</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 <span class="type">list</span></span><br></pre></td></tr></table></figure>
-<p>然后就会显示类似下面的东西(ASCII UI FTW);</p>
-<p> <img src="http://deepblue.qiniudn.com/FutFPoHGju0uGmHohESVTjEaEx1E" alt="pm2-list.png"></p>
-<p> 就像你看到的,现在你的应用有多少个进程就取决于你的CPU核心数了</p>
-<h3 id="按照termcaps-HTOP(Linux下的系统监控与进程管理软件)的方式管理">按照termcaps-HTOP(Linux下的系统监控与进程管理软件)的方式管理</h3><p>通过pm2 list命令来观察所有运行的进程以及它们的状态已经足够好了.但是怎么来追踪它们的资源消耗呢?别担心,用这个命令:</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>pm2 monit</span><br></pre></td></tr></table></figure>
-<p> 你可以得到进程(以及集群)的CPU的使用率和内存占用.</p>
-<p>  <img src="http://deepblue.qiniudn.com/Fhuu-MsMzKZTyJim98nOgOLiWikJ" alt="pm2-monit.png"></p>
-<p><strong>声明:</strong>  node-usage到目前为止还不支持MacOS(随便什么性能要求),不过它在Linux下运行良好.</p>
-<p>现在,让我们来核实一下我们的集群,还有对内存堆栈的垃圾回收,我们假设你已经有一个HTTP基准测试工具(如果没有,你一定要使用WRK):</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ express bufallo    //<span class="operator"><span class="keyword">Create</span> an express app</span><br><span class="line">$ cd bufallo</span><br><span class="line">$ npm <span class="keyword">install</span></span><br><span class="line">$ pm2 <span class="keyword">start</span> app.js -<span class="keyword">i</span> <span class="keyword">max</span></span><br><span class="line">$ wrk -<span class="keyword">c</span> <span class="number">100</span> -<span class="keyword">d</span> <span class="number">100</span> <span class="keyword">http</span>://localhost:<span class="number">3000</span>/</span></span><br></pre></td></tr></table></figure>
-<p>在另一个终端,运行监控选项:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 monit</span><br></pre></td></tr></table></figure>
-<h3 id="实时集中log处理">实时集中log处理</h3><p>现在你不得不管理多个集群进程:一个爬取数据,一个处理数据,等等…这就意味着大量log,你可以按照老式的方法处理:\</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tail -f /path/to/log1 /path/to/log2 ...</span><br></pre></td></tr></table></figure>
-<p>但我们想的很周到,我们增加了logs功能:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 logs</span><br></pre></td></tr></table></figure>
-<p> <img src="http://deepblue.qiniudn.com/FrgL120cv9vGMJHKVagoj_AsxUJw" alt="pm2-logs.png"></p>
-<h3 id="快速恢复">快速恢复</h3><p> 现在事情一切顺利,你的进程嗡嗡的运行着,你需要做一次硬重启(hard restart).现在吗?是的,首先,dump掉:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 dump</span><br></pre></td></tr></table></figure>
-<p> 然后,你可以从文件中恢复它:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 kill      //&#35753;&#25105;&#20204;&#20551;&#35774;&#19968;&#20010;PM2&#20572;&#25481;&#20102;&#10;$ pm2 resurect  //&#25105;&#25152;&#26377;&#30340;&#36827;&#31243;&#21448;&#28385;&#34880;&#28385;&#29366;&#24577;&#22797;&#27963;&#20102;</span><br></pre></td></tr></table></figure>
-<h3 id="强健的API">强健的API</h3><p> 比方说,你想要监控所有被PM2管理的进程,而且同时还想监控运行这些进程的机器的状态(甚至希望创建一个Angular应用来调用这些API…):</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 web</span><br></pre></td></tr></table></figure>
-<p> 打开浏览器输入<a href="http://localhost:9615" target="_blank" rel="external">http://localhost:9615</a> </p>
-<h3 id="对了,还有很多特性…">对了,还有很多特性…</h3><ul>
-<li>全部测试通过,</li>
-<li>新一代的update-rc.d(pm2 startup),当然它还是alpha版,</li>
-<li>开发模式下更改文件自动重启(pm2 dev),也同样还是草稿,</li>
-<li>自动刷新log,</li>
-<li>快捷的通过JSON文件管理你的应用,</li>
-<li>在error log里记录未捕获的异常,</li>
-<li>记录重启的次数和时间,</li>
-<li>退出时自动杀死进程.</li>
-</ul>
-<h3 id="下一步计划?">下一步计划?</h3><p>首先,你可以去Github上粉我们(我们喜欢stars).</p>
-<p>我们开发的PM2提供了先进完整的Node进程管理解决方案.我们希望能有更多的人来帮助我们:更多的pull requests.一些还停留在开发路线图上面的功能我们会尽快完成,下面这些就是:</p>
-<ul>
-<li>远程管理/状态校验,</li>
-<li>嵌入式跨进程通信通道(消息总线),</li>
-<li>V8垃圾回收的内存泄漏检查,</li>
-<li>Web界面,</li>
-<li>监控数据持久化,</li>
-<li>邮件通知.</li>
-</ul>
-</span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/09/01/nodepm2/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>

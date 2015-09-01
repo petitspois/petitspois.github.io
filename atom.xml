@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-09-01T05:53:59.000Z</updated>
+  <updated>2015-09-01T06:02:00.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -18,8 +18,8 @@
     <title><![CDATA[nodejs 运行管理应用PM2介绍]]></title>
     <link href="http://yoursite.com/2015/09/01/nodepm2/"/>
     <id>http://yoursite.com/2015/09/01/nodepm2/</id>
-    <published>2015-09-01T05:53:59.000Z</published>
-    <updated>2015-09-01T05:53:59.000Z</updated>
+    <published>2015-09-01T06:02:00.000Z</published>
+    <updated>2015-09-01T06:02:00.000Z</updated>
     <content type="html"><![CDATA[<p>devo.ps团队对JavaScript的迷恋已经不是什么秘密了;node.js作为服务器端,AngularJS作为客户端,某种程度上说,我们的堆栈是用它建成的.我们构建静态客户端和RESTful JSON API的方法意味着我们跑了很多的node.js,我必须承认尽管node.js的一切都令人敬畏,但当我们在生产环境中运行它时它仍然会让我们感到头疼.相比一些更加成熟的语言,它的工具和最佳实践仍然缺乏(试想一下:监控,日志,错误处理).</p>
 <p>到目前为止,我们仍然依赖漂亮俏皮的node-forever模块.它是非常伟大的模块,不过依然缺失一些功能:</p>
 <ul>
@@ -28,6 +28,7 @@
 <li>不支持集群</li>
 <li>代码库老化(意味着在升级node.js时频繁的失败)</li>
 </ul>
+<a id="more"></a>
 <h3 id="PM2到底是什么个东西呢?">PM2到底是什么个东西呢?</h3><p>首先你需要先通过npm来安装它:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="operator"><span class="keyword">install</span> pm2 -<span class="keyword">g</span></span></span><br></pre></td></tr></table></figure></p>
 <p>让我们通过表格来对比下:</p>
 <table>
@@ -129,7 +130,15 @@
 </ul>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>devo.ps团队对JavaScript的迷恋已经不是什么秘密了;node.js作为服务器端,AngularJS作为客户端,某种程度上说,我们的堆栈是用它建成的.我们构建静态客户端和RESTful JSON API的方法意味着我们跑了很多的node.js,我必须承认尽管no]]>
+    <![CDATA[<p>devo.ps团队对JavaScript的迷恋已经不是什么秘密了;node.js作为服务器端,AngularJS作为客户端,某种程度上说,我们的堆栈是用它建成的.我们构建静态客户端和RESTful JSON API的方法意味着我们跑了很多的node.js,我必须承认尽管node.js的一切都令人敬畏,但当我们在生产环境中运行它时它仍然会让我们感到头疼.相比一些更加成熟的语言,它的工具和最佳实践仍然缺乏(试想一下:监控,日志,错误处理).</p>
+<p>到目前为止,我们仍然依赖漂亮俏皮的node-forever模块.它是非常伟大的模块,不过依然缺失一些功能:</p>
+<ul>
+<li>有限的监控和日志功能</li>
+<li>进程管理配置的支持差</li>
+<li>不支持集群</li>
+<li>代码库老化(意味着在升级node.js时频繁的失败)</li>
+</ul>]]>
+    
     </summary>
     
       <category term="PM2" scheme="http://yoursite.com/tags/PM2/"/>
