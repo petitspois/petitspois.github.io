@@ -176,6 +176,83 @@
           
           
             
+              <a class="post-title-link" href="/2015/09/01/inputopt/" itemprop="url">
+                input 事件兼容处理以及中文输入法优化
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-01T11:59:48+08:00" content="2015-09-01">
+            2015-09-01
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/09/01/inputopt/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/inputopt/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p><strong>oninput</strong> 是 HTML5 的标准事件，对于检测 textarea, input:text, input:password 和 input:search 这几个元素通过用户界面发生的内容变化非常有用，在内容修改后立即被触发，不像 <strong>onchange</strong> 事件需要失去焦点才触发。 oninput 事件兼容为ie9+, ie下可以<strong>onpropertychange</strong>事件不是本节内容.</p>
+<h1 id="bug:">bug:</h1><ol>
+<li>IE9下不触发退格/删除/剪切输入事件（IE9 doesn’t fire input event on backspace/del/cut）</li>
+<li>当用户当前输入法状态是中文时，在未选择词组到输入框也会触发事件</li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/09/01/inputopt/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/09/01/gitauto/" itemprop="url">
                 Git命令自动补全
               </a>
@@ -378,7 +455,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -392,7 +469,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
