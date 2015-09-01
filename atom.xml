@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-09-01T03:15:10.000Z</updated>
+  <updated>2015-09-01T03:19:40.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -18,8 +18,8 @@
     <title><![CDATA[前端代码规范,类似google]]></title>
     <link href="http://yoursite.com/2015/09/01/daimaguifan/"/>
     <id>http://yoursite.com/2015/09/01/daimaguifan/</id>
-    <published>2015-09-01T03:15:10.000Z</published>
-    <updated>2015-09-01T03:15:10.000Z</updated>
+    <published>2015-09-01T03:19:40.000Z</published>
+    <updated>2015-09-01T03:19:40.000Z</updated>
     <content type="html"><![CDATA[<blockquote>
 <p>jade类以及内嵌js</p>
 </blockquote>
@@ -31,8 +31,7 @@
 <blockquote>
 <p>通用前端规范</p>
 </blockquote>
-<p>###html规范</p>
-<ul>
+<h3 id="html规范">html规范</h3><ul>
 <li>排版缩进为4</li>
 <li>标签属性使用小写</li>
 <li>在HTML5规范里并没有严格要求属性值两边加引号。但考虑到一些属性可以接受空白值，为了保持一致性，我们要求所有属性值必须加上引号。</li>
@@ -42,8 +41,7 @@
 <li>给每个表单里的字段加上 <code>&lt;label&gt;</code> 标签，其中的 for 属性必须和对应的输入字段对应，这样用户就可以点击标签。同理，给标签加上 cursor:pointer; 样式也是明智的做法。</li>
 <li>多媒体标签向后兼容，记得加上alt属性</li>
 </ul>
-<p>###CSS规范–(like google)</p>
-<ul>
+<h3 id="CSS规范–(like_google)">CSS规范–(like google)</h3><ul>
 <li>正确使用缩写，例如navigation就可以缩写为nav，而author就不要缩写</li>
 <li>id与class前不必加上标签类型</li>
 <li>属性尽量使用简写形式，如font或background等</li>
@@ -61,8 +59,7 @@
 <li>为每个选择符及每个属性申明单独使用一行</li>
 </ul>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">h1</span>,</span><br><span class="line"><span class="tag">h2</span>,</span><br><span class="line"><span class="tag">h3</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">font-weight</span>:<span class="value"> normal</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">1.2</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>###Javascript规范</p>
-<ul>
+<h3 id="Javascript规范">Javascript规范</h3><ul>
 <li>变量声明必须使用var</li>
 <li>记得使用分号结尾</li>
 <li>随意使用嵌套函数</li>
@@ -86,11 +83,9 @@
 <li>留空。总的来说，使用留空应该遵循源远流长的英语阅读惯例。 例如，每个逗号和冒号（以及适用的分号）后面要空一格，但在括号内部的左侧和右侧都不要加空格。另外，大括号应该总是和他们前面的参数出现在同一行。</li>
 </ul>
 <p>来看看下面的 JavaScript for循环的例子…</p>
-<p>####正确<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (var <span class="built_in">i</span> = <span class="number">0</span>, <span class="built_in">j</span> = arr.<span class="built_in">length</span>; <span class="built_in">i</span> &lt; <span class="built_in">j</span>; <span class="built_in">i</span>++) <span class="cell">&#123;</span><br><span class="line">	// Do something.</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>####不正确</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( var <span class="built_in">i</span> = <span class="number">0</span>, <span class="built_in">j</span> = arr.<span class="built_in">length</span>; <span class="built_in">i</span> &lt; <span class="built_in">j</span>; <span class="built_in">i</span>++ )</span><br><span class="line"><span class="cell">&#123;</span><br><span class="line">	// Do something.</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>####不正确</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(var <span class="built_in">i</span>=<span class="number">0</span>,<span class="built_in">j</span>=arr.<span class="built_in">length</span>;<span class="built_in">i</span>&lt;<span class="built_in">j</span>;<span class="built_in">i</span>++)<span class="cell">&#123;</span><br><span class="line">	// Do something.</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="正确">正确</h4><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (var <span class="built_in">i</span> = <span class="number">0</span>, <span class="built_in">j</span> = arr.<span class="built_in">length</span>; <span class="built_in">i</span> &lt; <span class="built_in">j</span>; <span class="built_in">i</span>++) <span class="cell">&#123;</span><br><span class="line">	// Do something.</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="不正确">不正确</h4><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( var <span class="built_in">i</span> = <span class="number">0</span>, <span class="built_in">j</span> = arr.<span class="built_in">length</span>; <span class="built_in">i</span> &lt; <span class="built_in">j</span>; <span class="built_in">i</span>++ )</span><br><span class="line"><span class="cell">&#123;</span><br><span class="line">	// Do something.</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="不正确-1">不正确</h4><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(var <span class="built_in">i</span>=<span class="number">0</span>,<span class="built_in">j</span>=arr.<span class="built_in">length</span>;<span class="built_in">i</span>&lt;<span class="built_in">j</span>;<span class="built_in">i</span>++)<span class="cell">&#123;</span><br><span class="line">	// Do something.</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
 ]]></content>
     <summary type="html">
     <![CDATA[<blockquote>
@@ -100,6 +95,22 @@
 <li>缩进为2，除了js声明 如：</li>
 </ul>
 <figure class="highlight stylus"><table><tr><td class="gutt]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Git命令自动补全]]></title>
+    <link href="http://yoursite.com/2015/09/01/gitauto/"/>
+    <id>http://yoursite.com/2015/09/01/gitauto/</id>
+    <published>2015-09-01T03:19:11.000Z</published>
+    <updated>2015-09-01T03:19:11.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="自动补全">自动补全</h1><p>如果你用的是 Bash shell，可以试试看 Git 提供的自动补全脚本。下载 Git 的源代码，进入 contrib/completion 目录，会看到一个 git-completion.bash 文件。将此文件复制到你自己的用户主目录中（译注：按照下面的示例，还应改名加上点：cp git-completion.bash ~/.git-completion.bash），并把下面一行内容添加到你的 .bashrc 文件中：<br>或者(find / -iname git-completion.bash)</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/<span class="class">.git-completion</span><span class="class">.bash</span></span><br></pre></td></tr></table></figure>
+<p>在输入 Git 命令的时候可以敲两次跳格键（Tab），就会看到列出所有匹配的可用命令建议：</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">$</span> <span class="comment">git</span> <span class="comment">co</span>&lt;<span class="comment">tab</span>&gt;&lt;<span class="comment">tab</span>&gt;</span><br><span class="line"><span class="comment">commit</span> <span class="comment">config</span></span><br><span class="line"></span><br><span class="line"><span class="comment">$</span> <span class="comment">git</span> <span class="comment">log</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">s</span>&lt;<span class="comment">tab</span>&gt;</span><br><span class="line"><span class="literal">-</span><span class="literal">-</span><span class="comment">shortstat</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">since=</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">src</span><span class="literal">-</span><span class="comment">prefix=</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">stat</span>   <span class="literal">-</span><span class="literal">-</span><span class="comment">summary</span></span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<h1 id="自动补全">自动补全</h1><p>如果你用的是 Bash shell，可以试试看 Git 提供的自动补全脚本。下载 Git 的源代码，进入 contrib/completion 目录，会看到一个 git-completion.bash 文件。将此文件复制到你自己]]>
     </summary>
     
   </entry>
